@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>危険物取扱者【甲種】予想問題演習帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#153259;
+    --paper:#C3DEF8;
+    --paper-raised:#EBF5FE;
+    --seal:#B23A2E;
+    --seal-soft:#E9D6D1;
+    --gold:#A6873A;
+    --pass:#2E6F4E;
+    --pass-soft:#DCE9DF;
+    --slate:#3E5C81;
+    --line:#AECBEA;
+    --line-strong:#7CA6D4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(20,70,130,0.06) 1px, transparent 0);
+    background-size: 18px 18px;
+  }
+  #app{
+    max-width:640px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:176px;
+    position:relative;
+  }
+  .topbar{
+    padding:calc(22px + env(safe-area-inset-top)) 20px 14px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    position:sticky; top:0; z-index:5;
+  }
+  .topbar.with-back{
+    display:flex; align-items:center; gap:12px;
+  }
+  .back-btn{
+    flex-shrink:0;
+    border:1px solid var(--line-strong);
+    background:var(--paper-raised);
+    color:var(--ink);
+    border-radius:4px;
+    padding:7px 12px;
+    font-size:13px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    cursor:pointer;
+  }
+  .brand{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:.02em;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+  }
+  .brand small{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:500;
+    font-size:12px;
+    color:var(--slate);
+    letter-spacing:.08em;
+  }
+  .main{flex:1; padding:18px 20px 10px;}
+  h2.section-title{
+    font-family:'Shippori Mincho',serif;
+    font-size:17px;
+    font-weight:700;
+    margin:0 0 14px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--ink);
+    display:inline-block;
+  }
+
+  /* ---------- HOME ---------- */
+  .home-hero{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:20px;
+    margin-bottom:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .home-hero::before{
+    content:"";
+    position:absolute; top:0; left:0; width:6px; height:100%;
+    background:var(--seal);
+  }
+  .home-hero .lead{font-size:13.5px;color:var(--slate);line-height:1.7;margin:0 0 12px;}
+  .stat-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .stat-chip{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:8px 12px;
+    min-width:88px;
+  }
+  .stat-chip .num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:19px; color:var(--ink);}
+  .stat-chip .lbl{font-size:10.5px; color:var(--slate); margin-top:2px;}
+
+  .field-group{margin-bottom:16px;}
+  .field-label{
+    font-size:12px; font-weight:700; color:var(--slate);
+    margin-bottom:8px; letter-spacing:.05em;
+    display:flex; align-items:center; gap:6px;
+  }
+  .field-label .idx{
+    font-family:'JetBrains Mono',monospace;
+    background:var(--ink); color:var(--paper);
+    font-size:10px; padding:1px 6px; border-radius:2px;
+  }
+  .chip-set{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip-btn{
+    border:1px solid var(--line-strong);
+    background:var(--paper-raised);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:13px;
+    padding:8px 13px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .chip-btn:hover{border-color:var(--ink);}
+  .chip-btn.active{
+    background:var(--ink); color:var(--paper-raised); border-color:var(--ink);
+  }
+  .start-btn{
+    width:100%;
+    margin-top:6px;
+    background:var(--seal);
+    color:#fff;
+    border:none;
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:.08em;
+    padding:15px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow:0 2px 0 #7d281f;
+  }
+  .start-btn:active{transform:translateY(2px); box-shadow:0 0 0 #7d281f;}
+  .start-btn:disabled{background:#B7C9DE; box-shadow:none; cursor:not-allowed;}
+  .empty-note{font-size:12.5px; color:var(--seal); margin-top:8px;}
+
+  /* ---------- DASHBOARD ---------- */
+  .dash-block{margin-bottom:22px;}
+  .dash-subtitle{
+    font-size:11.5px; font-weight:700; color:var(--slate); letter-spacing:.08em; margin:0 0 10px;
+  }
+  .dash-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
+  .dash-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
+    padding:12px 8px; text-align:center;
+  }
+  .dash-card .num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px; color:var(--ink);}
+  .dash-card .num small{font-size:11px; font-weight:500; color:var(--slate);}
+  .dash-card .lbl{font-size:9.5px; color:var(--slate); margin-top:3px; line-height:1.4;}
+
+  .today-row{display:flex; align-items:center; gap:18px; background:var(--paper-raised); border:1px solid var(--line); border-radius:4px; padding:16px;}
+  .ring-num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:15px; fill:var(--ink);}
+  .today-copy{flex:1;}
+  .today-copy .t-num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:22px; color:var(--ink);}
+  .today-copy .t-lbl{font-size:11.5px; color:var(--slate); margin-top:2px;}
+
+  .progress-mini-wrap{background:var(--paper-raised); border:1px solid var(--line); border-radius:4px; padding:16px;}
+  .progress-mini-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;}
+  .progress-mini-head .p-num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:16px; color:var(--ink);}
+  .progress-mini-head .p-lbl{font-size:11.5px; color:var(--slate);}
+  .progress-mini-track{height:8px; background:var(--line); border-radius:4px; overflow:hidden;}
+  .progress-mini-fill{height:100%; background:var(--pass); border-radius:4px; transition:width .3s ease;}
+
+  .subject-bars{background:var(--paper-raised); border:1px solid var(--line); border-radius:4px; padding:16px;}
+  .subj-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .subj-row:last-child{margin-bottom:0;}
+  .subj-name{width:84px; flex:none; font-size:11.5px; color:var(--ink); font-weight:700;}
+  .subj-track{flex:1; height:9px; background:var(--line); border-radius:5px; overflow:hidden;}
+  .subj-fill{height:100%; background:var(--gold); border-radius:5px; transition:width .3s ease;}
+  .subj-pct{width:56px; flex:none; text-align:right; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--slate);}
+
+  .review-card{
+    background:var(--paper-raised); border:1px solid var(--seal); border-radius:4px;
+    padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .review-card .r-copy b{font-family:'Shippori Mincho',serif; font-size:15px; display:block; color:var(--seal); margin-bottom:2px;}
+  .review-card .r-copy span{font-size:12px; color:var(--slate);}
+  .review-card button{
+    flex:none; background:var(--seal); color:#fff; border:none;
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:13px;
+    padding:11px 16px; border-radius:3px; cursor:pointer;
+  }
+  .review-card button:disabled{background:#C0D2E6; cursor:not-allowed;}
+
+  /* ---------- QUIZ ---------- */
+  .progress-bar{
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .progress-track{flex:1; height:4px; background:var(--line); border-radius:2px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--seal); transition:width .25s ease;}
+  .progress-txt{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--slate); white-space:nowrap;}
+
+  .tag-row{display:flex; gap:8px; margin-bottom:14px;}
+  .tag{
+    font-size:11px; padding:4px 10px; border-radius:2px;
+    border:1px solid var(--line-strong); color:var(--slate);
+    font-weight:500;
+  }
+  .tag.year{color:var(--gold); border-color:var(--gold);}
+  .tag.subject{color:var(--ink); border-color:var(--ink); font-weight:700;}
+  .tag.review{color:#fff; background:var(--seal); border-color:var(--seal); font-weight:700;}
+
+  .q-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px 20px;
+    margin-bottom:16px;
+  }
+  .q-text{
+    font-size:15.5px; line-height:1.85; font-weight:500;
+    margin:0;
+  }
+  .choice-list{display:flex; flex-direction:column; gap:10px;}
+  .choice-btn{
+    display:flex; align-items:flex-start; gap:12px;
+    text-align:left;
+    background:var(--paper-raised);
+    border:1.5px solid var(--line-strong);
+    border-radius:4px;
+    padding:13px 14px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .choice-btn:hover{border-color:var(--ink);}
+  .choice-btn.selected{border-color:var(--seal); background:#FBF1EE;}
+  .choice-num{
+    flex:none;
+    width:24px; height:24px; border-radius:50%;
+    border:1.5px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px;
+    color:var(--slate);
+  }
+  .choice-btn.selected .choice-num{border-color:var(--seal); color:var(--seal); background:#fff;}
+
+  .choice-btn.correct{border-color:var(--pass); background:var(--pass-soft);}
+  .choice-btn.correct .choice-num{border-color:var(--pass); color:#fff; background:var(--pass);}
+  .choice-btn.wrong{border-color:var(--seal); background:#FBF1EE;}
+  .choice-btn.wrong .choice-num{border-color:var(--seal); color:#fff; background:var(--seal);}
+  .choice-btn.disabled{cursor:default;}
+  .choice-btn mark.wrong-part{
+    background:var(--seal-soft); color:var(--seal);
+    font-weight:700; border-radius:2px; padding:0 2px;
+  }
+
+  .submit-btn{
+    width:100%; margin-top:18px;
+    background:var(--ink); color:var(--paper-raised);
+    border:none; font-family:'Shippori Mincho',serif; font-weight:700;
+    font-size:15px; letter-spacing:.05em; padding:14px; border-radius:3px;
+    cursor:pointer;
+  }
+  .submit-btn:disabled{background:#C0D2E6; color:#6F87A6; cursor:not-allowed;}
+
+  /* ---------- RESULT ---------- */
+  .stamp-wrap{
+    display:flex; justify-content:center; margin:6px 0 18px;
+  }
+  .stamp{
+    width:88px; height:88px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Shippori Mincho',serif;
+    font-size:46px; font-weight:700;
+    border:5px solid currentColor;
+    animation: stampIn .38s cubic-bezier(.2,1.4,.4,1);
+    transform:rotate(-8deg);
+  }
+  .stamp.ok{color:var(--seal);}
+  .stamp.ng{color:var(--slate);}
+  @keyframes stampIn{
+    0%{transform:scale(2.2) rotate(-8deg); opacity:0;}
+    60%{transform:scale(.92) rotate(-8deg); opacity:1;}
+    100%{transform:scale(1) rotate(-8deg); opacity:1;}
+  }
+  .result-headline{
+    text-align:center;
+    font-family:'Shippori Mincho',serif;
+    font-weight:700; font-size:15px;
+    margin:-6px 0 18px;
+    color:var(--slate);
+  }
+  .explain-panel{
+    background:var(--paper-raised);
+    border-left:4px solid var(--gold);
+    border-radius:0 4px 4px 0;
+    padding:16px 18px;
+    margin-top:6px;
+  }
+  .explain-panel .heading{
+    font-size:11.5px; font-weight:700; color:var(--gold);
+    letter-spacing:.1em; margin-bottom:8px;
+  }
+  .explain-panel p{font-size:13.5px; line-height:1.85; margin:0; color:var(--ink);}
+  .note-panel{
+    background:var(--seal-soft);
+    border-left:4px solid var(--seal);
+    border-radius:0 4px 4px 0;
+    padding:16px 18px;
+    margin-top:12px;
+  }
+  .note-panel .heading{
+    font-size:11.5px; font-weight:700; color:var(--seal);
+    letter-spacing:.1em; margin-bottom:8px;
+  }
+  .note-panel p{font-size:13px; line-height:1.85; margin:0; color:var(--ink);}
+  .next-btn{
+    width:100%; margin-top:18px;
+    background:var(--seal); color:#fff;
+    border:none; font-family:'Shippori Mincho',serif; font-weight:700;
+    font-size:15px; padding:14px; border-radius:3px; cursor:pointer;
+    box-shadow:0 2px 0 #7d281f;
+  }
+  .next-btn:active{transform:translateY(2px); box-shadow:0 0 0 #7d281f;}
+
+  /* ---------- SUMMARY ---------- */
+  .summary-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
+    padding:28px 20px; text-align:center;
+  }
+  .summary-card .rate{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:44px; color:var(--ink);
+  }
+  .summary-card .rate span{font-size:20px; color:var(--slate);}
+  .summary-card .caption{font-size:13px; color:var(--slate); margin:6px 0 20px;}
+  .summary-actions{display:flex; gap:10px;}
+  .summary-actions button{
+    flex:1; padding:13px; border-radius:3px; font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:700; font-size:13.5px; cursor:pointer; border:1.5px solid var(--ink);
+  }
+  .summary-actions .primary{background:var(--ink); color:var(--paper-raised);}
+  .summary-actions .secondary{background:transparent; color:var(--ink);}
+  .share-btn{
+    width:100%; margin-top:10px; padding:12px; border-radius:3px;
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:13px;
+    cursor:pointer; border:1.5px dashed var(--slate); background:transparent; color:var(--slate);
+  }
+  .share-btn:active{opacity:.7;}
+
+  /* ---------- CALENDAR ---------- */
+  .cal-overview{
+    display:flex; gap:10px; margin-bottom:18px;
+  }
+  .cal-stat{
+    flex:1; background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:4px; padding:12px 10px; text-align:center;
+  }
+  .cal-stat .num{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:20px;}
+  .cal-stat .lbl{font-size:10px; color:var(--slate); margin-top:3px;}
+  .cal-nav{
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;
+  }
+  .cal-nav .month-label{font-family:'Shippori Mincho',serif; font-weight:700; font-size:16px;}
+  .cal-nav button{
+    background:none; border:1px solid var(--line-strong); border-radius:3px;
+    width:32px; height:32px; cursor:pointer; font-size:15px; color:var(--ink);
+  }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:5px;
+  }
+  .cal-dow{text-align:center; font-size:10.5px; color:var(--slate); font-weight:700; padding-bottom:4px;}
+  .cal-cell{
+    aspect-ratio:1; border-radius:3px; position:relative;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .cal-cell.empty{border:none;}
+  .cal-cell .d{font-size:11px; color:var(--slate);}
+  .cal-cell .frac{font-size:8.5px; color:var(--ink); font-weight:700; margin-top:1px;}
+  .cal-cell.today{outline:2px solid var(--seal); outline-offset:1px;}
+  .cal-legend{display:flex; align-items:center; gap:6px; margin-top:14px; font-size:11px; color:var(--slate);}
+  .cal-legend .sw{width:13px; height:13px; border-radius:2px; border:1px solid var(--line);}
+  .cal-caption{font-size:11px; color:var(--slate); margin:0 0 8px;}
+
+  /* ---------- NAV ---------- */
+  .bottom-nav{
+    position:fixed; bottom:92px; left:50%; transform:translateX(-50%);
+    width:100%; max-width:640px;
+    background:var(--paper-raised); border-top:1px solid var(--line);
+    display:flex;
+    z-index:10;
+  }
+  .nav-btn{
+    flex:1; border:none; background:none; padding:12px 0 10px;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    cursor:pointer; color:var(--slate); font-family:'Zen Kaku Gothic New',sans-serif; font-size:11px;
+  }
+  .nav-btn.active{color:var(--seal);}
+  .nav-btn svg{width:20px; height:20px;}
+
+  .empty-state{
+    text-align:center; padding:40px 10px; color:var(--slate); font-size:13px; line-height:1.8;
+  }
+  ::selection{background:var(--seal-soft);}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ===========================================================
+   window.storage 互換シム（Capacitorアプリ用）
+   -----------------------------------------------------------
+   このアプリは元々Claudeのアーティファクト環境が提供する
+   window.storage というAPIを使っています。
+   実機・シミュレータのWebViewにはこのAPIが無いため、
+   同じ入出力になるようlocalStorageで再現しています。
+   アプリ本体（下のメインscript）は一切変更していません。
+   =========================================================== */
+if(!window.storage){
+  window.storage = {
+    async get(key, shared){
+      const raw = window.localStorage.getItem(key);
+      if(raw===null) return null;
+      return {key, value: raw, shared: !!shared};
+    },
+    async set(key, value, shared){
+      window.localStorage.setItem(key, value);
+      return {key, value, shared: !!shared};
+    },
+    async delete(key, shared){
+      window.localStorage.removeItem(key);
+      return {key, deleted:true, shared: !!shared};
+    },
+    async list(prefix, shared){
+      const keys = [];
+      for(let i=0;i<window.localStorage.length;i++){
+        const k = window.localStorage.key(i);
+        if(!prefix || (k && k.startsWith(prefix))) keys.push(k);
+      }
+      return {keys, prefix, shared: !!shared};
+    }
+  };
+}
+</script>
+<script>
+/* ===========================================================
+   AdMob バナー広告（Capacitorアプリでのみ動作）
+   -----------------------------------------------------------
+   ブラウザでこのファイルを直接開いた場合や、Capacitorでラップ
+   する前の状態では window.Capacitor が存在しないため、
+   下記コードは何もせずスキップされます（プレビューには影響なし）。
+   本番公開前に、TEST_APP_ID / TEST_BANNER_ID を
+   AdMobで発行された自分の本番IDに置き換えてください。
+   =========================================================== */
+(function(){
+  // ↓↓↓ ここを自分のAdMob本番IDに置き換える（Android/iOSそれぞれ別のIDです）↓↓↓
+  // ※このアプリはまだAdMob広告ユニットを作成していないため、プレースホルダーのままです。
+  const PROD_BANNER_ID_ANDROID = 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX';
+  const PROD_BANNER_ID_IOS = 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX';
+  // Googleが公式に配布しているテスト用ID（動作確認中はこちらを使う）
+  const TEST_BANNER_ID_ANDROID = 'ca-app-pub-3940256099942544/6300978111';
+  const TEST_BANNER_ID_IOS = 'ca-app-pub-3940256099942544/2934735716';
+
+  // 実行中のプラットフォームに応じて、Android用/iOS用のIDを切り替える
+  const platform = (window.Capacitor && window.Capacitor.getPlatform) ? window.Capacitor.getPlatform() : 'web';
+  const PROD_BANNER_ID = platform === 'ios' ? PROD_BANNER_ID_IOS : PROD_BANNER_ID_ANDROID;
+  const TEST_BANNER_ID = platform === 'ios' ? TEST_BANNER_ID_IOS : TEST_BANNER_ID_ANDROID;
+
+  // ★重要：クローズドテスト中はtrueのままにしてください。
+  // 自動テストツールや外部のテスターが本番広告を誤ってクリックすると、
+  // 「無効なクリック」とみなされAdMobアカウントが停止（BAN）されるリスクがあります。
+  // クローズドテストが完了し、製品版（本番）申請のビルドを作る直前に
+  // AdMobで本番の広告ユニットIDを取得し、上のPROD_BANNER_ID_*に設定してから
+  // false へ戻して再ビルド・再アップロードしてください。
+  const FORCE_TEST_ADS_FOR_CLOSED_TESTING = true;
+
+  // 本番IDをまだ設定していない間、またはクローズドテスト中は自動でテストIDを使う（誤クリックによる規約違反防止）
+  const BANNER_ID = (FORCE_TEST_ADS_FOR_CLOSED_TESTING || PROD_BANNER_ID.includes('XXXX')) ? TEST_BANNER_ID : PROD_BANNER_ID;
+
+  async function initAds(){
+    if(!window.Capacitor || !window.Capacitor.isNativePlatform || !window.Capacitor.isNativePlatform()) return;
+    const { AdMob } = window.Capacitor.Plugins || {};
+    if(!AdMob) return;
+
+    try{
+      await AdMob.initialize({
+        testingDevices: [],       // 実機でテストする場合はデバイスIDをここに追加
+        initializeForTesting: BANNER_ID===TEST_BANNER_ID,
+      });
+    }catch(e){
+      console.error('AdMob initialize failed', e);
+      return; // initializeに失敗した場合のみ広告表示を諦める
+    }
+
+    // App Tracking Transparency（ATT）許可リクエスト（iOS 14+）
+    // App Store審査ガイドライン2.1対応：実際に広告(トラッキングを伴うデータ収集)を
+    // リクエストするshowBanner()より前に許可ダイアログを表示する必要がある。
+    // 公式ドキュメントの推奨順序に合わせ、AdMob.initialize()の直後・showBanner()より前に呼び出す
+    // （initialize()より前に呼ぶとプラグイン側で正しく機能しないことが判明したため修正）。
+    // Android等、未実装のプラットフォームでは例外になるだけなので握りつぶして続行する。
+    try{
+      if(AdMob.trackingAuthorizationStatus){
+        const trackingInfo = await AdMob.trackingAuthorizationStatus();
+        if(trackingInfo && trackingInfo.status === 'notDetermined'){
+          await AdMob.requestTrackingAuthorization();
+        }
+      }
+    }catch(e){
+      console.error('ATT request failed (continuing without it)', e);
+    }
+
+    // EU/UK等のユーザー向け同意フォーム（Googleの規約で必須）
+    // ここが失敗しても（未設定・ネットワーク等）バナー表示自体は止めない
+    try{
+      const consentInfo = await AdMob.requestConsentInfo();
+      if(consentInfo.isConsentFormAvailable && consentInfo.status === 'REQUIRED'){
+        await AdMob.showConsentForm();
+      }
+    }catch(e){
+      console.error('AdMob consent flow failed (banner will still attempt to show)', e);
+    }
+
+    try{
+      await AdMob.showBanner({
+        adId: BANNER_ID,
+        adSize: 'ADAPTIVE_BANNER',
+        position: 'BOTTOM_CENTER',
+        margin: 0, // 画面最下部に固定。アプリ側のナビゲーションバー・ボタンは
+                   // CSS側(#app padding-bottom / .bottom-nav bottom)で
+                   // 広告の高さぶん上に逃がしてあるので、広告は0でOK
+      });
+    }catch(e){
+      console.error('AdMob showBanner failed', e);
+    }
+  }
+  initAds();
+})();
+</script>
+<script>
+/* ---------- ストアレビュー依頼（ダウンロード数改善のためのASO施策） ----------
+   演習を3回以上終え、かつ正答率70%以上という「良い体験」のタイミングで、
+   ストア標準のレビュー依頼ダイアログを一度だけ表示する。
+   ネイティブアプリ上でのみ動作し、Web版では何もしない。
+   一度依頼したら二度と表示しない（OS側にも表示回数の上限があるため、
+   アプリ側でも節度を持って呼び出す）。 */
+async function maybeRequestReview(rate){
+  try{
+    if(!window.Capacitor || !window.Capacitor.isNativePlatform || !window.Capacitor.isNativePlatform()) return;
+    if(window.localStorage.getItem('reviewRequested')) return;
+
+    const count = parseInt(window.localStorage.getItem('completedSessionCount')||'0', 10) + 1;
+    window.localStorage.setItem('completedSessionCount', String(count));
+
+    if(count>=3 && rate>=70){
+      const { InAppReview } = window.Capacitor.Plugins || {};
+      if(!InAppReview) return;
+      window.localStorage.setItem('reviewRequested', '1');
+      await InAppReview.requestReview();
+    }
+  }catch(e){
+    console.error('InAppReview requestReview failed', e);
+  }
+}
+
+/* ---------- 演習結果のSNSシェア（口コミ経由の流入を狙うASO施策） ----------
+   結果画面の「結果をシェアする」ボタンから呼び出す。
+   ネイティブアプリではOS標準の共有シート（X/LINEなど選択可）を、
+   Web版ではWeb Share APIまたはXの投稿画面をフォールバックとして開く。 */
+async function shareResult(session){
+  const rate = Math.round(session.correct/session.questions.length*100);
+  const text = `危険物取扱者（甲種）の予想問題演習で正答率${rate}%でした！（${session.questions.length}問中${session.correct}問正解）\n「危険物取扱者【甲種】予想問題演習帳」で毎日コツコツ復習中です。`;
+  const shareUrl = 'https://sumisukekun.github.io/';
+  try{
+    if(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()){
+      const { Share } = window.Capacitor.Plugins || {};
+      if(Share){
+        await Share.share({ text, url: shareUrl, dialogTitle: '演習結果をシェア' });
+        return;
+      }
+    }
+    if(navigator.share){
+      await navigator.share({ text, url: shareUrl });
+    }else{
+      const tweetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text + '\n' + shareUrl);
+      window.open(tweetUrl, '_blank');
+    }
+  }catch(e){
+    // ユーザーが共有シートをキャンセルした場合もここに来るが、異常ではないため何もしない
+    console.error('shareResult failed', e);
+  }
+}
+</script>
+<script>
+/* =========================================================
+   危険物取扱者【甲種】予想問題演習帳 — データ・ロジック・描画
+   ========================================================= */
+
+const SUBJECTS = ["法令","物理学・化学","性質・火災予防"];
+const SETS = ["第1回","第2回","第3回","第4回"];
+
+// ---- 問題データ（予想問題。公式の消防試験研究センターは実際の試験問題を
+//      原則公表していないため、公表資料と出題範囲の分析に基づく
+//      オリジナルの予想問題です。実データを追加する場合は同じ形式で
+//      配列に追加してください）----
+const QUESTIONS = [
+{id:1,set:"第1回",subject:"法令",qno:1,
+ text:"消防法上の「危険物」の定義に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "消防法別表第一に掲げる物品で、同表に定める区分に応じ同表に定める性状を有するものをいう。",
+  "危険物とは、爆発物取締罰則に定める火薬類を含む、爆発のおそれのある物品全般をいう。",
+  "危険物とは、労働安全衛生法上の危険物・有害物として指定された物品をいう。",
+  "危険物とは、高圧ガス保安法上の高圧ガスをいう。",
+  "危険物とは、毒物及び劇物取締法上の毒物・劇物をいう。"],
+ answer:0,
+ explain:"消防法2条7項は、危険物とは別表第一の品名欄に掲げる物品で、同表に定める区分に応じ同表に定める性状を有するものをいうと定義している。1が妥当。火薬類（2）、労働安全衛生法上の危険物・有害物（3）、高圧ガス（4）、毒物劇物（5）は、いずれも別の法律で規制される概念であり消防法上の危険物の定義とは異なる。",
+ wrongMarks:{1:"爆発物取締罰則に定める火薬類を含む、爆発のおそれのある物品全般をいう",2:"労働安全衛生法上の危険物・有害物として指定された物品をいう",3:"高圧ガス保安法上の高圧ガスをいう",4:"毒物及び劇物取締法上の毒物・劇物をいう"}},
+
+{id:2,set:"第1回",subject:"法令",qno:2,
+ text:"指定数量に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "指定数量とは、危険物についてその危険性を勘案して政令で定める数量であり、貯蔵・取扱いの規制の基準となる数量である。",
+  "指定数量は、すべての類の危険物について一律に同じ数量が定められている。",
+  "指定数量未満の危険物であれば、市町村条例による規制も一切受けない。",
+  "指定数量は、危険物取扱者の資格の種類ごとに定められた数量である。",
+  "指定数量は、危険物を貯蔵し、又は取り扱うことができる最大の数量として、これを超える貯蔵・取扱いは理由のいかんを問わず一切禁止される。"],
+ answer:0,
+ explain:"指定数量は危険物の規制の基準となる数量で、品名・性状ごとに政令（危険物の規制に関する政令別表第三）で定められている。1が妥当。2は品名ごとに数量が異なるため誤り。3は指定数量未満の危険物の貯蔵・取扱いは市町村条例により規制される（消防法9条の4）ため誤り。4は資格の種類ではなく危険物の品名・性状ごとに定められるため誤り。5は指定数量の倍数に応じた許可等の手続きを経れば、指定数量以上の貯蔵・取扱いも可能であるため誤り。",
+ wrongMarks:{1:"すべての類の危険物について一律に同じ数量が定められている",2:"市町村条例による規制も一切受けない",3:"危険物取扱者の資格の種類ごとに定められた数量である",4:"理由のいかんを問わず一切禁止される"}},
+
+{id:3,set:"第1回",subject:"法令",qno:3,
+ text:"甲種危険物取扱者に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "甲種危険物取扱者は、すべての類の危険物について取扱い及び立会いを行うことができる。",
+  "甲種危険物取扱者は、第4類の危険物についてのみ取扱い及び立会いを行うことができる。",
+  "甲種危険物取扱者は、危険物の取扱いはできるが、乙種・丙種取扱者の取扱作業への立会いは一切できない。",
+  "甲種危険物取扱者免状の交付を受けるためには、乙種危険物取扱者免状を取得していることのみが要件となる。",
+  "甲種危険物取扱者は、危険物保安監督者に選任されることはできない。"],
+ answer:0,
+ explain:"甲種危険物取扱者は第1類から第6類まですべての類の危険物について取扱い及び無資格者の取扱作業への立会いを行うことができる（消防法13条、危険物の規制に関する政令31条の2）。1が妥当。2は乙種第4類の説明であり誤り。3は甲種は立会いも可能なため誤り。4は甲種試験の受験資格は乙種免状取得に加え実務経験等の複数のルートがあるため「のみ」とする点が誤り。5は甲種は危険物保安監督者に選任される資格を有するため誤り。",
+ wrongMarks:{1:"第4類の危険物についてのみ取扱い及び立会いを行うことができる",2:"立会いは一切できない",3:"乙種危険物取扱者免状を取得していることのみが要件となる",4:"危険物保安監督者に選任されることはできない"}},
+
+{id:4,set:"第1回",subject:"法令",qno:4,
+ text:"危険物取扱者免状に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "免状の記載事項に変更を生じたときは、免状を交付した都道府県知事等に書換えを申請しなければならない。",
+  "免状を亡失した場合は、再交付を受けることはできず、改めて試験に合格しなければならない。",
+  "免状は、一度交付されれば全国どこでも有効期限なく使用でき、書換えの必要は一切生じない。",
+  "都道府県知事等は、免状の返納を命ずることはできない。",
+  "免状を亡失してその再交付を受けた者は、亡失した免状を発見しても、これを10日以内に届け出れば足り、返納の必要はない。"],
+ answer:0,
+ explain:"危険物の規制に関する政令33条等により、免状の記載事項（本籍地の都道府県、氏名等）に変更が生じたときは、免状を交付した都道府県知事等に書換えを申請しなければならない。1が妥当。2は免状の再交付制度があるため誤り。3は本籍地等の変更があれば書換えが必要であり誤り。4は法令に違反した場合、都道府県知事等は免状の返納を命ずることができる（消防法13条の2第5項）ため誤り。5は再交付後に亡失した免状を発見した場合は、これを10日以内に免状の再交付を受けた都道府県知事等に提出しなければならないため誤り。",
+ wrongMarks:{1:"再交付を受けることはできず、改めて試験に合格しなければならない",2:"書換えの必要は一切生じない",3:"免状の返納を命ずることはできない",4:"これを10日以内に届け出れば足り、返納の必要はない"}},
+
+{id:5,set:"第1回",subject:"法令",qno:5,
+ text:"危険物保安監督者に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "製造所等の所有者等は、政令で定める製造所等について、甲種又は乙種危険物取扱者で6か月以上の実務経験を有する者のうちから危険物保安監督者を選任しなければならない。",
+  "危険物保安監督者は、丙種危険物取扱者の中からのみ選任しなければならない。",
+  "危険物保安監督者の選任・解任は、都道府県知事等への届出を要しない。",
+  "危険物保安監督者は、すべての製造所等に選任が義務付けられている。",
+  "危険物保安監督者には、実務経験の要件は一切課されていない。"],
+ answer:0,
+ explain:"消防法13条1項、危険物の規制に関する政令31条の2により、政令で定める製造所等の所有者等は、甲種又は乙種危険物取扱者で6か月以上の危険物取扱いの実務経験を有する者のうちから危険物保安監督者を選任しなければならない。1が妥当。2は丙種は危険物保安監督者にはなれないため誤り。3は選任・解任は遅滞なく都道府県知事等に届け出なければならない（消防法13条2項）ため誤り。4は政令で定める一定の製造所等にのみ選任義務があるため誤り。5は6か月以上の実務経験が要件とされるため誤り。",
+ wrongMarks:{1:"丙種危険物取扱者の中からのみ選任しなければならない",2:"都道府県知事等への届出を要しない",3:"すべての製造所等に選任が義務付けられている",4:"実務経験の要件は一切課されていない"}},
+
+{id:6,set:"第1回",subject:"物理学・化学",qno:1,
+ text:"物質の状態変化に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "固体が液体を経ずに直接気体になる変化を昇華という。",
+  "液体が固体になる変化を気化という。",
+  "気体が液体になる変化を昇華という。",
+  "固体が液体になる変化を凝固という。",
+  "液体が気体になる変化を融解という。"],
+ answer:0,
+ explain:"固体から液体を経ずに直接気体になる変化（またはその逆）を昇華という。1が妥当。液体が固体になるのは凝固（2は誤り、気化ではない）、気体が液体になるのは凝縮（3は誤り）、固体が液体になるのは融解（4は誤り、凝固ではない）、液体が気体になるのは気化（5は誤り、融解ではない）。",
+ wrongMarks:{1:"気化という",2:"昇華という",3:"凝固という",4:"融解という"}},
+
+{id:7,set:"第1回",subject:"物理学・化学",qno:2,
+ text:"引火点及び発火点に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "引火点とは、可燃性液体の表面近くに点火源を近づけたとき、燃焼するのに十分な濃度の蒸気を液面上に発生する最低の液温をいう。",
+  "発火点とは、点火源を近づけなくても物質が自ら発火する最も高い温度をいう。",
+  "一般に、引火点は発火点よりも高い温度である。",
+  "引火点が低い物質ほど、常温付近では危険性が低いといえる。",
+  "発火点は、可燃性蒸気の濃度が燃焼範囲内にあるときにのみ意味を持つ点火源の温度をいう。"],
+ answer:0,
+ explain:"引火点は、可燃性液体が点火源によって燃焼を開始するのに十分な濃度の蒸気を発生する最低の液温をいう。1が妥当。発火点は点火源がなくても物質が自ら発火する最低の温度であり「最も高い温度」ではない（2誤り）。一般に引火点は発火点より低い（3誤り）。引火点が低いほど常温でも引火しやすく危険性は高い（4誤り）。発火点は点火源の温度ではなく物質自体が自然発火する温度をいう（5誤り）。",
+ wrongMarks:{1:"最も高い温度をいう",2:"引火点は発火点よりも高い温度である",3:"常温付近では危険性が低いといえる",4:"点火源の温度をいう"}},
+
+{id:8,set:"第1回",subject:"物理学・化学",qno:3,
+ text:"燃焼の三要素に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "燃焼が継続するためには、可燃物・酸素供給源・点火源（熱源）の3つがそろう必要がある。",
+  "燃焼の三要素とは、固体・液体・気体の三態をいう。",
+  "燃焼には可燃物と点火源のみが必要であり、酸素供給源は不要である。",
+  "燃焼の三要素とは、引火点・発火点・燃焼範囲をいう。",
+  "不燃性の物質であっても、点火源と酸素があれば必ず燃焼を開始する。"],
+ answer:0,
+ explain:"燃焼が成立し継続するためには、可燃物・酸素供給源・点火源（熱源）の三要素がそろうことが必要である（このいずれか一つを取り除くことが消火の原理となる）。1が妥当。2・4は三要素の定義として誤り。3は酸素供給源も必須であり誤り。5は不燃性物質は本質的に燃焼しないため誤り。",
+ wrongMarks:{1:"固体・液体・気体の三態をいう",2:"酸素供給源は不要である",3:"引火点・発火点・燃焼範囲をいう",4:"点火源と酸素があれば必ず燃焼を開始する"}},
+
+{id:9,set:"第1回",subject:"性質・火災予防",qno:1,
+ text:"第1類の危険物（酸化性固体）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第1類の危険物は、それ自体は不燃性であるが、他の可燃物の燃焼を著しく促進する酸素供給源としての性質を有する。",
+  "第1類の危険物は、それ自体が強い可燃性を有し、単独でも激しく燃焼する。",
+  "第1類の危険物は、水と接触すると直ちに発火する禁水性物質に分類される。",
+  "第1類の危険物は、常温で自然発火する自然発火性物質に分類される。",
+  "第1類の危険物は、加熱・衝撃・摩擦等によっても分解しない極めて安定した物質である。"],
+ answer:0,
+ explain:"第1類の危険物（塩素酸塩類、過マンガン酸塩類等）は酸化性固体であり、それ自体は不燃性であるが、多くは酸素を分離して他の可燃物の燃焼を著しく促進する性質を有する。1が妥当。2は第1類自体は不燃性であり誤り。3は禁水性は第3類の性質であり誤り。4は自然発火性も第3類の性質であり誤り。5は加熱・衝撃・摩擦等により分解し酸素を放出して爆発的に燃焼を促進することがあるため誤り。",
+ wrongMarks:{1:"それ自体が強い可燃性を有し、単独でも激しく燃焼する",2:"直ちに発火する禁水性物質に分類される",3:"常温で自然発火する自然発火性物質に分類される",4:"加熱・衝撃・摩擦等によっても分解しない極めて安定した物質である"}},
+
+{id:10,set:"第1回",subject:"性質・火災予防",qno:2,
+ text:"第2類の危険物（可燃性固体）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第2類の危険物は、いずれも比較的低温で着火しやすい可燃性の固体であり、酸化剤との接触・混合や火気を避ける必要がある。",
+  "第2類の危険物は、すべて水と接触すると発火又は可燃性ガスを発生する。",
+  "第2類の危険物は、自己反応性物質に分類され、自身の中に酸素を含有する。",
+  "第2類の危険物は、いずれも自然発火性を有し、空気中で自然に発火する。",
+  "第2類の危険物は、酸化性液体に分類される。"],
+ answer:0,
+ explain:"第2類の危険物（硫黄、赤リン、鉄粉、マグネシウム、引火性固体等）は、比較的低温で着火しやすい可燃性固体であり、酸化剤との混合や火気・高温体との接近を避けることが火災予防上重要である。1が妥当。2は鉄粉・マグネシウム等の一部は水や酸と反応するが「すべて」ではなく誤り。3は自己反応性物質は第5類であり誤り。4は自然発火性は第3類の性質であり誤り。5は第2類は固体であり酸化性液体（第6類）ではないため誤り。",
+ wrongMarks:{1:"すべて水と接触すると発火又は可燃性ガスを発生する",2:"自己反応性物質に分類され、自身の中に酸素を含有する",3:"いずれも自然発火性を有し、空気中で自然に発火する",4:"酸化性液体に分類される"}},
+
+{id:11,set:"第2回",subject:"法令",qno:1,
+ text:"製造所等の区分に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "消防法上の製造所等は、製造所・貯蔵所・取扱所の3つに大別され、貯蔵所は7種類、取扱所は4種類に区分される。",
+  "製造所等には、製造所と貯蔵所の2種類しかなく、取扱所という区分は存在しない。",
+  "屋内貯蔵所と屋外貯蔵所は同一の基準で規制される。",
+  "給油取扱所は、貯蔵所の一種に分類される。",
+  "移動タンク貯蔵所は、取扱所の一種に分類される。"],
+ answer:0,
+ explain:"消防法上、危険物を取り扱う施設は製造所・貯蔵所・取扱所に大別され、貯蔵所は屋内貯蔵所・屋外タンク貯蔵所・屋内タンク貯蔵所・地下タンク貯蔵所・簡易タンク貯蔵所・移動タンク貯蔵所・屋外貯蔵所の7種類、取扱所は給油取扱所・販売取扱所・移送取扱所・一般取扱所の4種類に区分される。1が妥当。2は取扱所という区分が存在するため誤り。3は屋内貯蔵所と屋外貯蔵所はそれぞれ異なる位置・構造・設備の基準が定められているため誤り。4は給油取扱所は取扱所に分類されるため誤り。5は移動タンク貯蔵所は貯蔵所に分類されるため誤り。",
+ wrongMarks:{1:"製造所と貯蔵所の2種類しかなく、取扱所という区分は存在しない",2:"同一の基準で規制される",3:"貯蔵所の一種に分類される",4:"取扱所の一種に分類される"}},
+
+{id:12,set:"第2回",subject:"法令",qno:2,
+ text:"仮貯蔵・仮取扱いに関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "指定数量以上の危険物は、所轄消防長又は消防署長の承認を受ければ、10日以内の期間に限り、仮に貯蔵し、又は取り扱うことができる。",
+  "指定数量以上の危険物の仮貯蔵・仮取扱いは、いかなる場合であっても認められない。",
+  "仮貯蔵・仮取扱いの承認を受けるためには、都道府県知事の許可が必要である。",
+  "仮貯蔵の期間に上限はなく、承認を受ければ無期限に貯蔵できる。",
+  "仮貯蔵・仮取扱いは、指定数量未満の危険物についてのみ適用される制度である。"],
+ answer:0,
+ explain:"消防法10条1項ただし書により、指定数量以上の危険物は、所轄消防長又は消防署長の承認を受けて10日以内の期間に限り仮に貯蔵し、又は取り扱うことが認められている。1が妥当。2は承認を受ければ認められるため誤り。3は承認権者は都道府県知事ではなく所轄消防長又は消防署長であるため誤り。4は10日以内という期間制限があるため誤り。5は仮貯蔵・仮取扱いはそもそも指定数量以上の危険物について例外的に認める制度であるため誤り（指定数量未満は市町村条例の規制対象）。",
+ wrongMarks:{1:"いかなる場合であっても認められない",2:"都道府県知事の許可が必要である",3:"承認を受ければ無期限に貯蔵できる",4:"指定数量未満の危険物についてのみ適用される制度である"}},
+
+{id:13,set:"第2回",subject:"法令",qno:3,
+ text:"完成検査に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "製造所等の設置又は変更の許可を受けた者は、工事完了後、市町村長等の完成検査を受け、技術上の基準に適合していると認められた後でなければ、原則として当該施設を使用することができない。",
+  "完成検査は、危険物取扱者本人が自ら行う検査であり、行政機関の検査を要しない。",
+  "完成検査前検査の制度は存在しない。",
+  "完成検査を受けずに製造所等を使用しても、罰則の対象となることはない。",
+  "仮使用の承認を受けた部分についても、市町村長等の承認なしに使用することはできない、という規定は存在しない。"],
+ answer:0,
+ explain:"消防法11条5項により、製造所等の設置・変更の許可を受けた者は、工事完了後に市町村長等の完成検査を受け、技術上の基準に適合していると認められた後でなければ、原則として使用することができない。1が妥当。2は完成検査は市町村長等（行政庁）が行う検査であり誤り。3はタンクの水張検査等を行う完成検査前検査の制度が存在するため誤り。4は無許可使用は罰則の対象となり得るため誤り。5は仮使用制度自体は市町村長等の承認を受けて変更工事に係る部分以外を使用する制度であり、記述の趣旨が実態と整合しないため誤り。",
+ wrongMarks:{1:"危険物取扱者本人が自ら行う検査であり、行政機関の検査を要しない",2:"完成検査前検査の制度は存在しない",3:"罰則の対象となることはない",4:"市町村長等の承認なしに使用することはできない、という規定は存在しない"}},
+
+{id:14,set:"第2回",subject:"法令",qno:4,
+ text:"保安距離及び保有空地に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "保安距離とは、製造所等の外壁等から学校・病院・住居等の保安対象物までの間に確保しなければならない距離であり、保有空地とは、火災の際の消火活動や延焼防止のために製造所等の周囲に確保しなければならない空地をいう。",
+  "保安距離と保有空地は同一の概念であり、両者を区別する実益はない。",
+  "保有空地には、資材等を置くことができる。",
+  "保安距離は、すべての製造所等について一律に同じ距離が定められている。",
+  "保安距離が確保されていれば、保有空地を確保する必要はない。"],
+ answer:0,
+ explain:"保安距離は製造所等と保安対象物（住居、学校、病院、重要文化財等）との間に確保すべき距離、保有空地は消火活動・延焼防止のため製造所等の周囲に確保すべき空地であり、それぞれ目的・対象が異なる。1が妥当。2は両者は別個の規制であり誤り。3は保有空地は原則として物件を置くことができない空地であり誤り。4は施設の種類・危険物の指定数量の倍数等により距離が異なるため誤り。5は保安距離と保有空地はそれぞれ別に確保が必要であるため誤り。",
+ wrongMarks:{1:"同一の概念であり、両者を区別する実益はない",2:"資材等を置くことができる",3:"すべての製造所等について一律に同じ距離が定められている",4:"保有空地を確保する必要はない"}},
+
+{id:15,set:"第2回",subject:"法令",qno:5,
+ text:"予防規程に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "政令で定める製造所等の所有者等は、予防規程を定め、市町村長等の認可を受けなければならない。",
+  "予防規程は、すべての製造所等に例外なく作成が義務付けられている。",
+  "予防規程は、一度認可を受ければ、その後内容を変更することは一切できない。",
+  "予防規程の作成は義務ではなく、任意に作成することができるにとどまる。",
+  "予防規程の認可権者は、所轄消防長又は消防署長である。"],
+ answer:0,
+ explain:"消防法14条の2により、政令で定める一定規模以上の製造所等の所有者等は予防規程を定め、市町村長等の認可を受けなければならない。1が妥当。2は政令で定める製造所等にのみ義務付けられ、小規模なものは対象外の場合があるため誤り。3は必要に応じて変更でき、変更時も認可を要するため誤り。4は法律上の義務であるため誤り。5は認可権者は市町村長等であるため誤り。",
+ wrongMarks:{1:"すべての製造所等に例外なく作成が義務付けられている",2:"その後内容を変更することは一切できない",3:"任意に作成することができるにとどまる",4:"所轄消防長又は消防署長である"}},
+
+{id:16,set:"第2回",subject:"物理学・化学",qno:1,
+ text:"静電気に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "電気の不良導体（絶縁体）は、静電気を蓄積しやすく、放電火花により可燃性蒸気に引火するおそれがある。",
+  "静電気は湿度が高い環境ほど発生・蓄積しやすい。",
+  "液体を配管内で高速に流動させても、静電気の発生量には影響しない。",
+  "接地（アース）を施すことは、静電気対策として無意味である。",
+  "静電気は金属製の容器には一切帯電しない。"],
+ answer:0,
+ explain:"電気の不良導体は電荷が移動しにくく静電気が蓄積しやすいため、蓄積した静電気の放電火花が可燃性蒸気に引火する危険がある。1が妥当。2は湿度が高いほど電荷が空気中に逃げやすく静電気は発生・蓄積しにくいため誤り。3は流速が速いほど摩擦による静電気の発生量は増加するため誤り。4は接地は静電気を大地に逃がす有効な対策であるため誤り。5は絶縁されていない金属容器でも接地されていなければ帯電し得るため誤り。",
+ wrongMarks:{1:"湿度が高い環境ほど発生・蓄積しやすい",2:"静電気の発生量には影響しない",3:"静電気対策として無意味である",4:"金属製の容器には一切帯電しない"}},
+
+{id:17,set:"第2回",subject:"物理学・化学",qno:2,
+ text:"酸化と還元に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "物質が酸素と化合する反応を酸化といい、酸化物が酸素を失う反応を還元という。",
+  "酸化とは物質が電子を受け取る反応のみをいい、酸素との化合は含まれない。",
+  "還元とは、物質が酸素と結合する反応をいう。",
+  "酸化反応と還元反応は、互いに独立して単独で生じるものであり、同時に起こることはない。",
+  "可燃物の燃焼は還元反応であり、酸化反応ではない。"],
+ answer:0,
+ explain:"広義には、物質が酸素と化合する反応を酸化、酸化物が酸素を失う反応を還元という（電子の授受による定義でも整合する）。1が妥当。2は酸化には酸素との化合も含まれるため誤り。3は還元の説明が酸化の説明になっており誤り。4は酸化還元反応は一方が酸化されれば他方が還元される形で同時に進行するため誤り。5は燃焼は可燃物が酸素と結合する酸化反応であるため誤り。",
+ wrongMarks:{1:"酸素との化合は含まれない",2:"物質が酸素と結合する反応をいう",3:"同時に起こることはない",4:"還元反応であり、酸化反応ではない"}},
+
+{id:18,set:"第2回",subject:"物理学・化学",qno:3,
+ text:"燃焼範囲（爆発限界）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "可燃性蒸気が空気と混合している場合、その濃度が一定の範囲内にあるときにのみ点火源により燃焼が起こり、この濃度範囲を燃焼範囲という。",
+  "燃焼範囲の下限値が高い物質ほど、少量の蒸気でも引火しやすく危険性が高い。",
+  "燃焼範囲は、物質の色によって定まる。",
+  "可燃性蒸気の濃度が燃焼範囲の上限を超えている場合が最も引火の危険性が高い。",
+  "燃焼範囲が狭い物質ほど、一般に危険性が高いといえる。"],
+ answer:0,
+ explain:"可燃性蒸気と空気の混合気体は、その濃度が一定範囲（燃焼範囲・爆発限界）内にあるときにのみ点火源により燃焼・爆発する。1が妥当。2は下限値が低いほど少量の蒸気でも燃焼範囲に入りやすく危険性が高いため誤り。3は燃焼範囲は物質の化学的性質によって定まり色とは無関係であり誤り。4は濃度が上限を超えている状態は燃料過多（酸素不足）で燃焼しにくく、燃焼範囲内にあるときが最も危険であるため誤り。5は一般に燃焼範囲が広い物質ほど燃焼範囲内に入りやすく危険性が高いとされるため誤り。",
+ wrongMarks:{1:"少量の蒸気でも引火しやすく危険性が高い",2:"物質の色によって定まる",3:"最も引火の危険性が高い",4:"一般に危険性が高いといえる"}},
+
+{id:19,set:"第2回",subject:"性質・火災予防",qno:1,
+ text:"第3類の危険物（自然発火性物質及び禁水性物質）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第3類の危険物の多くは、空気中で自然発火するか、水と接触して発火し、又は可燃性ガスを発生する性質を有する。",
+  "第3類の危険物は、いずれも酸化性固体に分類される。",
+  "第3類の危険物は、水と接触させることで安全に消火することができる。",
+  "第3類の危険物は、常温では極めて安定しており、いかなる場合も自然発火しない。",
+  "第3類の危険物は、第4類の危険物と同様、引火性液体に分類される。"],
+ answer:0,
+ explain:"第3類の危険物（カリウム、ナトリウム、黄リン等）は、自然発火性又は禁水性（あるいはその両方）を有し、空気や水との接触により発火・可燃性ガス発生等の危険性を示す。1が妥当。2は酸化性固体は第1類であり誤り。3は多くは注水厳禁であり水と接触させると発火・爆発の危険があるため誤り。4は自然発火性を有する物質が含まれるため誤り。5は第3類は固体又は液体であるが引火性液体（第4類）とは異なる分類であるため誤り。",
+ wrongMarks:{1:"いずれも酸化性固体に分類される",2:"水と接触させることで安全に消火することができる",3:"いかなる場合も自然発火しない",4:"引火性液体に分類される"}},
+
+{id:20,set:"第2回",subject:"性質・火災予防",qno:2,
+ text:"カリウム及びナトリウム（第3類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "カリウム及びナトリウムは、いずれも水と激しく反応して水素ガスを発生し、発火することがあるため、灯油等の中に保存する。",
+  "カリウム及びナトリウムは、水との反応性がなく、水道水中で長期保存するのが最も安全である。",
+  "カリウム及びナトリウムは、いずれも常温で気体として存在する。",
+  "カリウム及びナトリウムの火災には、注水による消火が最も適している。",
+  "カリウム及びナトリウムは、第4類に分類される代表的な引火性液体である。"],
+ answer:0,
+ explain:"カリウム・ナトリウムは水と激しく反応し水素ガスを発生して発火することがあるため、空気や水分との接触を断つ目的で灯油や流動パラフィン中に保存する。1が妥当。2は水と激しく反応するため水中保存は極めて危険であり誤り。3は常温で軟らかい金属固体であるため誤り。4は注水は水との反応による発火・爆発を助長するため厳禁であり誤り（乾燥砂等で消火する）。5は第3類の禁水性物質に分類される金属であり第4類の引火性液体ではないため誤り。",
+ wrongMarks:{1:"水道水中で長期保存するのが最も安全である",2:"常温で気体として存在する",3:"注水による消火が最も適している",4:"第4類に分類される代表的な引火性液体である"}},
+
+{id:21,set:"第2回",subject:"性質・火災予防",qno:3,
+ text:"消火設備の種類に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "危険物の規制に関する政令上、消火設備は第1種から第5種までに区分され、第1種は屋内・屋外消火栓設備、第5種は消火器等の小型の消火設備である。",
+  "消火設備は、その規模を問わず、すべて同一の種類のものを設置すればよい。",
+  "第5種の消火設備には、大型消火栓設備のみが含まれる。",
+  "スプリンクラー設備は、消火設備の区分には含まれない。",
+  "不活性ガス消火設備は、いかなる危険物の火災にも使用してはならない。"],
+ answer:0,
+ explain:"消火設備は第1種（屋内・屋外消火栓設備）、第2種（スプリンクラー設備）、第3種（水蒸気消火設備、泡消火設備、不活性ガス消火設備、ハロゲン化物消火設備、粉末消火設備等の固定式・移動式の消火設備）、第4種（大型消火器）、第5種（小型消火器、水バケツ、乾燥砂等）に区分される。1が妥当。2は施設の規模・危険物の種類に応じ適応する種類の消火設備を設置する必要があり誤り。3は第5種は小型消火設備であり大型消火栓設備は含まれないため誤り。4はスプリンクラー設備は第2種に区分されるため誤り。5は不活性ガス消火設備は第4類の油火災等に有効な場合があるため誤り。",
+ wrongMarks:{1:"すべて同一の種類のものを設置すればよい",2:"大型消火栓設備のみが含まれる",3:"消火設備の区分には含まれない",4:"いかなる危険物の火災にも使用してはならない"}},
+
+{id:22,set:"第3回",subject:"法令",qno:1,
+ text:"危険物の運搬に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "危険物の運搬については、指定数量未満であっても、運搬容器・積載方法・運搬方法に関する消防法上の基準が適用される。",
+  "危険物の運搬は、指定数量以上の場合にのみ消防法上の規制を受ける。",
+  "危険物の運搬容器には、収納する危険物の品名等を表示する必要はない。",
+  "運搬中の危険物の温度管理については、一切の基準が定められていない。",
+  "危険物の運搬は、危険物取扱者が自ら運転する場合に限り認められる。"],
+ answer:0,
+ explain:"危険物の運搬（車両等での移動）に関する基準（消防法16条、危険物の規制に関する政令28条以下）は、指定数量未満の場合も含めて全国一律に適用される点が、指定数量未満は市町村条例による貯蔵・取扱いの規制と異なる特徴である。1が妥当。2は指定数量未満でも運搬基準は適用されるため誤り。3は運搬容器の外部に品名・数量等の表示が義務付けられているため誤り。4は第5類の一部等、温度に関する基準が定められている危険物もあるため誤り。5は運搬行為自体には危険物取扱者の同乗は必須とされていないため誤り（取扱いの都度資格者の関与が必要となるのとは異なる）。",
+ wrongMarks:{1:"指定数量以上の場合にのみ消防法上の規制を受ける",2:"収納する危険物の品名等を表示する必要はない",3:"一切の基準が定められていない",4:"危険物取扱者が自ら運転する場合に限り認められる"}},
+
+{id:23,set:"第3回",subject:"法令",qno:2,
+ text:"危険物の混載基準に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "運搬に関する技術上の基準では、類の異なる危険物を同一車両で混載することについて、原則として制限が設けられている。",
+  "すべての類の危険物は、数量にかかわらず自由に混載することができる。",
+  "混載の可否は、危険物取扱者の個人的な判断に委ねられている。",
+  "第1類と第6類の危険物は、指定数量の倍数を問わず常に混載が禁止される。",
+  "混載基準は、鉄道による運搬には適用されない。"],
+ answer:0,
+ explain:"危険物の規制に関する政令等に基づく運搬基準では、性質の異なる類の危険物同士は、原則として同一車両への混載が制限され、指定数量の10分の1以下であれば混載できる組合せなど、細かな基準が定められている（例えば第1類と第6類は比較的混載が認められやすい組合せとされる）。1が妥当。2は類ごとの組合せにより制限があるため誤り。3は法令上の明確な基準によるものであり個人の判断に委ねられていないため誤り。4は第1類と第6類は他の組合せに比べ混載が認められやすい代表例であり「常に禁止」は誤り。5は運搬基準は輸送手段を問わず適用されるため誤り。",
+ wrongMarks:{1:"数量にかかわらず自由に混載することができる",2:"危険物取扱者の個人的な判断に委ねられている",3:"指定数量の倍数を問わず常に混載が禁止される",4:"鉄道による運搬には適用されない"}},
+
+{id:24,set:"第3回",subject:"法令",qno:3,
+ text:"製造所等に設ける標識及び掲示板に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "製造所等には、見やすい箇所に危険物の製造所等である旨を表示した標識及び防火に関し必要な事項を掲示した掲示板を設けなければならない。",
+  "標識・掲示板の設置は、所有者等の任意であり、法令上の義務ではない。",
+  "掲示板には、危険物の品名・貯蔵最大数量等を表示する必要はない。",
+  "第4類の危険物を貯蔵する製造所等の掲示板には、「禁水」と表示しなければならない。",
+  "標識の色やサイズについては、一切の定めがない。"],
+ answer:0,
+ explain:"危険物の規制に関する政令等により、製造所等には標識及び防火上必要な事項（危険物の類・品名・貯蔵最大数量・指定数量の倍数・危険物保安監督者の氏名等）を掲示した掲示板の設置が義務付けられている。1が妥当。2は法令上の義務であるため誤り。3は品名・数量等の表示が義務付けられているため誤り。4は「禁水」表示は禁水性物質（第1類の一部や第3類）に関する掲示であり、第4類（引火性液体）には「火気厳禁」等の表示が用いられるため誤り。5は標識・掲示板の色・大きさ・記載事項について規則で定めがあるため誤り。",
+ wrongMarks:{1:"所有者等の任意であり、法令上の義務ではない",2:"表示する必要はない",3:"「禁水」と表示しなければならない",4:"一切の定めがない"}},
+
+{id:25,set:"第3回",subject:"法令",qno:4,
+ text:"危険物取扱者に対する都道府県知事等の監督処分に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "都道府県知事等は、危険物取扱者が消防法令に違反しているときは、当該危険物取扱者に対し免状の返納を命ずることができる。",
+  "免状の返納命令は、当該免状を交付していない都道府県知事等であっても、自由に行うことができる。",
+  "免状の返納を命じられても、危険物取扱者としての資格は何ら制限されない。",
+  "危険物取扱者に対する監督処分としては、免状の返納命令以外に手段は存在しない。",
+  "免状の返納命令に違反しても、罰則の適用はない。"],
+ answer:0,
+ explain:"消防法13条の2第5項により、危険物取扱者が消防法令の規定に違反しているときは、免状を交付した都道府県知事等はその者に対し免状の返納を命ずることができる。1が妥当。2は返納命令は原則として免状を交付した都道府県知事等が行うため誤り。3は返納命令を受けると危険物取扱者としての資格を失うことになるため誤り。4は保安講習の受講義務等、他の規制も存在するため趣旨として誤り。5は返納命令違反には罰則（過料等）の適用があり得るため誤り。",
+ wrongMarks:{1:"当該免状を交付していない都道府県知事等であっても、自由に行うことができる",2:"資格は何ら制限されない",3:"免状の返納命令以外に手段は存在しない",4:"罰則の適用はない"}},
+
+{id:26,set:"第3回",subject:"物理学・化学",qno:1,
+ text:"比重に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "液体の比重が1より小さい物質は、水に浮く（水より軽い）。",
+  "蒸気比重が1より小さい気体は、空気より重く低所に滞留しやすい。",
+  "比重とは、物質の質量そのものを表す単位であり、無次元の量ではない。",
+  "第4類の危険物の蒸気は、そのほとんどが空気より軽く、天井付近に滞留する。",
+  "液比重が1より大きい物質は、水に浮いて広がる。"],
+ answer:0,
+ explain:"液比重が1より小さい物質は水より軽いため水に浮く。1が妥当。蒸気比重が1より小さい気体は空気より軽く高所に拡散しやすい（2は逆であり誤り）。比重は基準となる物質（水や空気）との質量の比であり無次元の量である（3は誤り）。第4類の危険物の蒸気の多くは空気より重く低所に滞留しやすいとされる（4は誤り）。液比重が1より大きい物質は水に沈むため「水に浮いて広がる」は誤り（5は誤り、この性質は水面火災時の消火方法選択にも関わる重要な性質である）。",
+ wrongMarks:{1:"空気より重く低所に滞留しやすい",2:"物質の質量そのものを表す単位であり、無次元の量ではない",3:"そのほとんどが空気より軽く、天井付近に滞留する",4:"水に浮いて広がる"}},
+
+{id:27,set:"第3回",subject:"物理学・化学",qno:2,
+ text:"熱及び比熱に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "比熱とは、物質1gの温度を1℃（1K）上昇させるのに必要な熱量をいい、比熱が小さい物質ほど温まりやすく冷めやすい。",
+  "比熱が大きい物質ほど、少ない熱量で急激に温度が上昇する。",
+  "熱容量は、物質の種類にかかわらず、質量だけによって定まる普遍的な値である。",
+  "熱伝導率が高い物質ほど、熱が伝わりにくい。",
+  "気化熱（蒸発熱）とは、液体が固体になるときに放出する熱量をいう。"],
+ answer:0,
+ explain:"比熱は物質1gを1℃（1K）上昇させるのに必要な熱量であり、比熱が小さい物質は少ない熱量で温度が変化しやすい（温まりやすく冷めやすい）。1が妥当。2は比熱が大きい物質ほど温度上昇に多くの熱量を要するため誤り。3は熱容量は物質の質量と比熱の両方によって定まるため誤り。4は熱伝導率が高いほど熱は伝わりやすいため誤り。5は気化熱は液体が気体になるときに吸収する熱量であり、記述は凝固熱の説明にもなっておらず誤り。",
+ wrongMarks:{1:"少ない熱量で急激に温度が上昇する",2:"物質の種類にかかわらず、質量だけによって定まる普遍的な値である",3:"熱が伝わりにくい",4:"液体が固体になるときに放出する熱量をいう"}},
+
+{id:28,set:"第3回",subject:"物理学・化学",qno:3,
+ text:"pH（水素イオン指数）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "pHは水溶液の酸性・アルカリ性の程度を表す指標であり、pH7が中性、pHが7より小さいほど酸性が強く、7より大きいほどアルカリ性が強い。",
+  "pHの値が大きいほど、酸性が強い。",
+  "pHが7の水溶液は、強い酸性を示す。",
+  "pHは、水溶液の温度に一切影響されない絶対的な値である。",
+  "酸とアルカリの水溶液は、混合しても中和反応は起こらない。"],
+ answer:0,
+ explain:"pHは水素イオン濃度から求められる指標で、pH7が中性、値が小さいほど酸性が強く、大きいほどアルカリ性が強い。1が妥当。2はpHが大きいほどアルカリ性が強いため誤り。3はpH7は中性であり誤り。4はpHは温度によって変化し得るため誤り。5は酸とアルカリを混合すると中和反応が起こり塩と水を生じるため誤り。",
+ wrongMarks:{1:"酸性が強い",2:"強い酸性を示す",3:"一切影響されない絶対的な値である",4:"混合しても中和反応は起こらない"}},
+
+{id:29,set:"第3回",subject:"性質・火災予防",qno:1,
+ text:"第4類の危険物（引火性液体）の分類に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第4類の危険物は、引火点の低いものから順に、特殊引火物、第一石油類、アルコール類、第二石油類、第三石油類、第四石油類、動植物油類に区分される。",
+  "第4類の危険物は、引火点による区分ではなく、色によって区分される。",
+  "特殊引火物は、第4類の中で最も引火点が高い区分である。",
+  "動植物油類は、第4類には含まれず、第3類に分類される。",
+  "第四石油類は、ガソリンが分類される代表的な区分である。"],
+ answer:0,
+ explain:"第4類（引火性液体）は、危険性の高い（引火点の低い）ものから順に特殊引火物・第一石油類・アルコール類・第二石油類・第三石油類・第四石油類・動植物油類に区分される。1が妥当。2は引火点等の性状による区分であり色とは無関係であり誤り。3は特殊引火物は第4類の中で最も引火点が低い（危険性が高い）区分であり誤り。4は動植物油類は第4類に含まれるため誤り。5はガソリンは第一石油類に分類されるため誤り。",
+ wrongMarks:{1:"色によって区分される",2:"第4類の中で最も引火点が高い区分である",3:"第4類には含まれず、第3類に分類される",4:"ガソリンが分類される代表的な区分である"}},
+
+{id:30,set:"第3回",subject:"性質・火災予防",qno:2,
+ text:"ガソリン（第一石油類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "ガソリンは引火点が氷点下であり、常温でも引火の危険性が高く、蒸気は空気より重いため低所に滞留しやすい。",
+  "ガソリンの引火点は100℃以上であり、常温では引火のおそれがない。",
+  "ガソリンは水に溶けやすい水溶性の液体である。",
+  "ガソリンの蒸気は空気より軽く、拡散して滞留することはない。",
+  "ガソリンは、静電気による引火のおそれが全くない物質である。"],
+ answer:0,
+ explain:"ガソリンの引火点はおおむね-40℃以下と極めて低く、常温でも常に引火性蒸気を発生する危険性が高い液体であり、その蒸気比重は空気より大きく（重く）低所に滞留しやすい。1が妥当。2は引火点が氷点下と低いため誤り。3はガソリンは非水溶性（水に溶けにくい）であるため誤り。4は蒸気は空気より重く低所に滞留するため誤り。5はガソリンは電気の不良導体であり静電気が蓄積しやすく、静電気火花による引火のおそれが高いため誤り。",
+ wrongMarks:{1:"引火点は100℃以上であり、常温では引火のおそれがない",2:"水に溶けやすい水溶性の液体である",3:"拡散して滞留することはない",4:"静電気による引火のおそれが全くない物質である"}},
+
+{id:31,set:"第3回",subject:"性質・火災予防",qno:3,
+ text:"アルコール類（第4類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "アルコール類の多くは水に溶けやすい水溶性の液体であり、水溶性液体用（耐アルコール泡）の泡消火薬剤を用いなければ一般の泡消火剤の泡が破壊されることがある。",
+  "アルコール類は、いずれも水に全く溶けない非水溶性の液体である。",
+  "アルコール類には引火性がなく、火災予防上の注意を要しない。",
+  "一般の（耐アルコール性でない）泡消火剤は、アルコール類の消火に最も適している。",
+  "アルコール類の比重は、いずれも1.5を超える。"],
+ answer:0,
+ explain:"エタノール等のアルコール類は水に溶けやすい水溶性の物質が多く、一般の泡消火剤を用いるとアルコールが泡の水分を奪って泡を破壊してしまうため、水溶性液体用泡消火薬剤（耐アルコール泡）を用いる必要がある。1が妥当。2はアルコール類は水溶性であるため誤り。3はアルコール類も引火性液体であり火気厳禁等の注意を要するため誤り。4は一般の泡消火剤は消泡してしまうため不適であり誤り。5はアルコール類の比重はおおむね1未満（水より軽い）であるため誤り。",
+ wrongMarks:{1:"いずれも水に全く溶けない非水溶性の液体である",2:"火災予防上の注意を要しない",3:"アルコール類の消火に最も適している",4:"いずれも1.5を超える"}},
+
+{id:32,set:"第3回",subject:"性質・火災予防",qno:4,
+ text:"第4類の危険物に対する消火方法に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第4類の危険物の多くは水より軽く水に溶けにくいため、棒状の水を直接放射すると火面が拡大するおそれがあり、一般に窒息消火を原理とする泡・粉末・二酸化炭素消火剤等が適している。",
+  "第4類の危険物の火災には、大量の水を棒状に放射して冷却消火するのが最も効果的である。",
+  "第4類の危険物は比重が1より大きいものばかりであるため、注水しても燃焼面が拡大することはない。",
+  "第4類の危険物の消火には、酸素供給を促進する薬剤を用いるべきである。",
+  "第4類の危険物の火災には、いかなる消火設備も使用できない。"],
+ answer:0,
+ explain:"多くの第4類危険物は水より軽く（非水溶性で）水に溶けにくいため、棒状注水すると危険物が水に浮いて燃えながら広がり火面が拡大するおそれがある。そのため燃焼を窒息させる泡・粉末・二酸化炭素・ハロゲン化物等の消火剤が一般に用いられる。1が妥当。2は水による冷却消火は火面拡大の危険があるため不適切であり誤り。3は比重が1未満の物質が多いため誤り。4は酸素供給を促進する薬剤はかえって燃焼を助長するため誤り。5は泡消火設備・粉末消火設備等の適応する消火設備が存在するため誤り。",
+ wrongMarks:{1:"大量の水を棒状に放射して冷却消火するのが最も効果的である",2:"注水しても燃焼面が拡大することはない",3:"酸素供給を促進する薬剤を用いるべきである",4:"いかなる消火設備も使用できない"}},
+
+{id:33,set:"第4回",subject:"法令",qno:1,
+ text:"危険物保安統括管理者に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第4類の危険物を大量に取り扱う一定規模以上の製造所等の所有者等は、危険物保安統括管理者を定め、当該事業所における危険物の保安に関する業務を統括管理させなければならない。",
+  "危険物保安統括管理者は、必ず甲種危険物取扱者の資格を有していなければならない。",
+  "危険物保安統括管理者は、危険物保安監督者と同一の職務を行う者であり、両者を区別する必要はない。",
+  "危険物保安統括管理者の選任は、事業所の規模にかかわらず一律に義務付けられている。",
+  "危険物保安統括管理者には、危険物取扱者の資格が一切不要である場合はない。"],
+ answer:0,
+ explain:"消防法12条の7により、第4類の危険物を指定数量の一定倍数以上取り扱う製造所等の所有者等は、危険物保安統括管理者を選任し、事業所全体の危険物保安に関する業務を統括管理させなければならない。1が妥当。2は統括管理者は事業所全体の管理・監督を行う立場であり、危険物取扱者の資格は法律上の選任要件とされていないため誤り。3は保安統括管理者は事業所全体を統括する立場、保安監督者は個々の施設の保安を担当する立場であり職務が異なるため誤り。4は一定規模以上の事業所に限られるため誤り。5は資格を要件としない点が制度の特徴であるため誤り。",
+ wrongMarks:{1:"必ず甲種危険物取扱者の資格を有していなければならない",2:"両者を区別する必要はない",3:"事業所の規模にかかわらず一律に義務付けられている",4:"危険物取扱者の資格が一切不要である場合はない"}},
+
+{id:34,set:"第4回",subject:"法令",qno:2,
+ text:"定期点検に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "政令で定める製造所等の所有者等は、当該製造所等について定期に点検し、その点検記録を作成して一定期間保存しなければならない。",
+  "定期点検は、危険物取扱者の資格を有しない者が行うことは、いかなる場合も認められない。",
+  "定期点検の記録は、作成後直ちに廃棄しなければならない。",
+  "定期点検は、すべての製造所等に一律の頻度で実施することが義務付けられている。",
+  "地下タンクを有する製造所等には、定期点検の義務はない。"],
+ answer:0,
+ explain:"消防法14条の3の2等により、政令で定める一定の製造所等の所有者等は定期点検を行い、点検記録を作成して一定期間（原則3年間）保存しなければならない。1が妥当。2は危険物取扱者の立会いがあれば無資格者が点検を行うことも認められる場合があるため誤り。3は記録は一定期間保存する義務があり直ちに廃棄してはならないため誤り。4は施設の種類等により点検の対象・頻度が異なるため誤り。5は地下タンクを有する製造所等はタンクの漏えい点検を含め定期点検の対象となる代表例であるため誤り。",
+ wrongMarks:{1:"いかなる場合も認められない",2:"作成後直ちに廃棄しなければならない",3:"すべての製造所等に一律の頻度で実施することが義務付けられている",4:"定期点検の義務はない"}},
+
+{id:35,set:"第4回",subject:"法令",qno:3,
+ text:"保安検査に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "政令で定める規模以上の屋外タンク貯蔵所等については、市町村長等が行う保安に関する検査（保安検査）を定期的に受けなければならない。",
+  "保安検査は、危険物取扱者本人が自己の判断のみで実施すれば足り、行政機関の検査を要しない。",
+  "保安検査の対象施設は、危険物の種類にかかわらず全ての製造所等である。",
+  "保安検査を受けなくても、罰則が科されることはない。",
+  "保安検査は、完成検査と全く同一の内容の検査である。"],
+ answer:0,
+ explain:"消防法14条の3等により、政令で定める一定規模以上の屋外タンク貯蔵所や移送取扱所等は、市町村長等が行う保安検査を定期的に受けなければならない。1が妥当。2は保安検査は市町村長等（行政庁）が行う検査であるため誤り。3は一定規模以上の特定の施設に限られるため誤り。4は保安検査を受けない場合は許可の取消し等の対象となり得るため誤り。5は保安検査は既存施設の経年劣化等を確認する検査であり、新設時の完成検査とは目的・内容が異なるため誤り。",
+ wrongMarks:{1:"危険物取扱者本人が自己の判断のみで実施すれば足り、行政機関の検査を要しない",2:"危険物の種類にかかわらず全ての製造所等である",3:"罰則が科されることはない",4:"完成検査と全く同一の内容の検査である"}},
+
+{id:36,set:"第4回",subject:"法令",qno:4,
+ text:"製造所等の使用停止命令に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "市町村長等は、製造所等の所有者等が消防法令の規定に違反したときは、期間を定めて当該製造所等の使用の停止を命ずることができる。",
+  "使用停止命令は、危険物取扱者個人の免状に対してのみ行うことができ、施設に対して行うことはできない。",
+  "使用停止命令に従わなくても、罰則の適用はない。",
+  "使用停止命令は、いかなる理由があっても取り消すことができない。",
+  "使用停止命令は、都道府県知事のみが行うことができ、市町村長は権限を有しない。"],
+ answer:0,
+ explain:"消防法12条の3等により、市町村長等は製造所等の所有者等が位置・構造・設備の基準維持義務違反や無許可変更等の消防法令違反をしたときは、期間を定めて当該施設の使用停止を命ずることができる。1が妥当。2は使用停止命令は施設（製造所等）に対する処分であり誤り。3は命令違反には罰則が科され得るため誤り。4は状況の是正等により取消しがあり得るため誤り。5は市町村長等（都道府県知事等を含む）が権限を有するため誤り。",
+ wrongMarks:{1:"危険物取扱者個人の免状に対してのみ行うことができ、施設に対して行うことはできない",2:"罰則の適用はない",3:"いかなる理由があっても取り消すことができない",4:"都道府県知事のみが行うことができ、市町村長は権限を有しない"}},
+
+{id:37,set:"第4回",subject:"法令",qno:5,
+ text:"危険物保安講習に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "製造所等において危険物の取扱作業に従事している危険物取扱者は、都道府県知事等が行う保安講習を原則として一定期間ごとに受講しなければならない。",
+  "保安講習の受講義務は、甲種危険物取扱者には課されない。",
+  "保安講習は、危険物取扱者免状を取得した者全員に、就業の有無を問わず一律に義務付けられている。",
+  "保安講習を受講しなくても、危険物取扱者としての業務に一切支障は生じない。",
+  "保安講習の実施主体は、市町村消防長に限られる。"],
+ answer:0,
+ explain:"消防法13条の23により、危険物の取扱作業に現に従事している危険物取扱者は、都道府県知事等が行う保安講習を原則として3年に1回程度受講しなければならない。1が妥当。2は甲種・乙種・丙種を問わず取扱作業に従事していれば受講義務があるため誤り。3は現に取扱作業に従事している者が対象であり、免状取得者全員に一律ではないため誤り。4は未受講のまま長期間経過すると法令違反となり免状の返納命令等の対象になり得るため誤り。5は都道府県知事等（指定講習機関を含む）が実施するため誤り。",
+ wrongMarks:{1:"甲種危険物取扱者には課されない",2:"就業の有無を問わず一律に義務付けられている",3:"危険物取扱者としての業務に一切支障は生じない",4:"市町村消防長に限られる"}},
+
+{id:38,set:"第4回",subject:"物理学・化学",qno:1,
+ text:"化学反応に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "化学反応の前後で、反応に関与する物質全体の質量の総和は変化しない（質量保存の法則）。",
+  "化学反応が起こると、物質を構成する原子の総数は必ず変化する。",
+  "発熱反応とは、周囲から熱を吸収しながら進行する反応をいう。",
+  "触媒は、反応の前後でそれ自身が化学変化を受け、反応後には別の物質になる。",
+  "可燃物の燃焼反応は吸熱反応であり、周囲の温度を低下させる。"],
+ answer:0,
+ explain:"質量保存の法則により、化学反応の前後で反応に関与する物質全体の質量の総和は変化しない。1が妥当。2は化学反応では原子の組合せは変わるが原子の総数自体は保存されるため誤り。3は発熱反応は熱を放出する反応であり、記述は吸熱反応の説明であるため誤り。4は触媒は反応の前後で自身は変化しない（消費されない）物質であるため誤り。5は燃焼は熱を放出する発熱反応であるため誤り。",
+ wrongMarks:{1:"物質を構成する原子の総数は必ず変化する",2:"周囲から熱を吸収しながら進行する反応をいう",3:"反応の前後でそれ自身が化学変化を受け、反応後には別の物質になる",4:"周囲の温度を低下させる"}},
+
+{id:39,set:"第4回",subject:"物理学・化学",qno:2,
+ text:"金属のイオン化傾向に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "イオン化傾向が大きい金属ほど、水や酸と反応しやすく、酸化されやすい。",
+  "イオン化傾向が大きい金属ほど、化学的に安定しており反応性が低い。",
+  "カリウムは、金属の中でもイオン化傾向が極めて小さい部類に入る。",
+  "金のようなイオン化傾向の小さい金属は、水や酸と激しく反応する。",
+  "イオン化傾向は、金属の色によって決まる。"],
+ answer:0,
+ explain:"イオン化傾向は金属が水溶液中で陽イオンになろうとする性質の大小を表し、イオン化傾向が大きい金属ほど電子を放出しやすく、水や酸と反応しやすい（酸化されやすい）。1が妥当。2はイオン化傾向が大きいほど反応性は高いため誤り。3はカリウムはイオン化傾向が最も大きい部類の金属であるため誤り。4は金は代表的にイオン化傾向が小さく反応性が低い金属であるため誤り。5はイオン化傾向は金属の化学的性質によるものであり色とは無関係であるため誤り。",
+ wrongMarks:{1:"化学的に安定しており反応性が低い",2:"金属の中でもイオン化傾向が極めて小さい部類に入る",3:"水や酸と激しく反応する",4:"金属の色によって決まる"}},
+
+{id:40,set:"第4回",subject:"物理学・化学",qno:3,
+ text:"混合気体に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "可燃性蒸気は空気と一定の割合で混合したときに最も燃焼・爆発しやすくなり、その割合は物質ごとに異なる。",
+  "可燃性蒸気は、空気と混合しなくても単独で燃焼を継続できる。",
+  "可燃性蒸気の濃度が濃ければ濃いほど、常に爆発の危険性は高くなる。",
+  "密閉された容器内では、可燃性蒸気が滞留しても爆発の危険性はない。",
+  "可燃性蒸気と空気の混合比は、爆発の危険性と無関係である。"],
+ answer:0,
+ explain:"可燃性蒸気は空気（酸素）と適切な割合で混合したときに点火源によって燃焼・爆発しやすくなり、その燃焼範囲（爆発限界）は物質ごとに固有の値を持つ。1が妥当。2は燃焼の継続には酸素供給源が必要であるため誤り。3は濃度が燃焼範囲の上限を超えると酸素不足でかえって燃焼しにくくなるため誤り。4は密閉容器内に可燃性蒸気が滞留し点火源が生じれば爆発の危険があるため誤り。5は混合比（濃度）は燃焼範囲内にあるかどうかを左右する重要な要素であるため誤り。",
+ wrongMarks:{1:"空気と混合しなくても単独で燃焼を継続できる",2:"常に爆発の危険性は高くなる",3:"爆発の危険性はない",4:"爆発の危険性と無関係である"}},
+
+{id:41,set:"第4回",subject:"性質・火災予防",qno:1,
+ text:"灯油及び軽油（第二石油類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "灯油及び軽油の引火点はおおむね40℃以上であり、ガソリンに比べると常温での引火の危険性は低いが、霧状になったり布に染み込んだりすると引火しやすくなる。",
+  "灯油及び軽油の引火点は、ガソリンよりも低い。",
+  "灯油は水に溶けやすい水溶性の危険物である。",
+  "軽油はアルコール類に分類される。",
+  "灯油及び軽油は、加熱しても引火の危険性は変化しない。"],
+ answer:0,
+ explain:"灯油・軽油は第二石油類に分類され、引火点はおおむね40℃以上とガソリン（第一石油類）より高く常温での危険性は相対的に低いが、霧状にしたり布・紙等に染み込ませて表面積を増やすと常温でも引火しやすくなる点に注意が必要である。1が妥当。2は引火点はガソリンより高いため誤り。3は非水溶性であるため誤り。4は軽油は第二石油類でありアルコール類ではないため誤り。5は液温が引火点以上に加熱されれば引火の危険性が増すため誤り。",
+ wrongMarks:{1:"ガソリンよりも低い",2:"水に溶けやすい水溶性の危険物である",3:"アルコール類に分類される",4:"加熱しても引火の危険性は変化しない"}},
+
+{id:42,set:"第4回",subject:"性質・火災予防",qno:2,
+ text:"重油（第三石油類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "重油は引火点がおおむね70℃以上であり常温での引火の危険性は比較的低いが、いったん燃焼すると温度が高くなり消火が難しくなることがある。",
+  "重油の引火点は、特殊引火物より低い。",
+  "重油は水によく溶ける水溶性の液体である。",
+  "重油は常温で自然発火する自然発火性物質である。",
+  "重油は第4類には分類されない。"],
+ answer:0,
+ explain:"重油は第三石油類に分類され、引火点はおおむね70℃以上と比較的高く常温での引火の危険性は低いが、粘度が高く一度火災になると熱せられた油の温度が高くなり、消火作業が難航しやすい性質がある。1が妥当。2は特殊引火物は第4類の中で最も引火点が低い区分であり、重油の引火点はそれよりはるかに高いため誤り。3は非水溶性であるため誤り。4は自然発火性は第3類の性質であり誤り。5は重油は第三石油類として第4類に分類されるため誤り。",
+ wrongMarks:{1:"特殊引火物より低い",2:"水によく溶ける水溶性の液体である",3:"常温で自然発火する自然発火性物質である",4:"第4類には分類されない"}},
+
+{id:43,set:"第4回",subject:"性質・火災予防",qno:3,
+ text:"動植物油類（第4類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "動植物油類の中には、乾性油のように油を染み込ませた布等が自然発火（酸化熱の蓄積による発火）を起こすものがあり、保管方法に注意を要する。",
+  "動植物油類は、第4類の中で最も引火点が低い区分に分類される。",
+  "動植物油類は、いかなる保管状況でも自然発火することはない。",
+  "動植物油類は水溶性であり、水と自由に混和する。",
+  "動植物油類には引火性がなく、消防法上の危険物には該当しない。"],
+ answer:0,
+ explain:"動植物油類の一部（乾性油）は、空気中の酸素と反応して酸化熱を発生し、それが蓄積することで自然発火することがあり、油を染み込ませたウエスや布等の保管・廃棄方法に注意が必要である。1が妥当。2は動植物油類は第4類の中で引火点が高い区分に位置付けられるため誤り。3は乾性油などは条件により自然発火し得るため誤り。4は非水溶性であるため誤り。5は動植物油類は第4類の危険物に指定されているため誤り。",
+ wrongMarks:{1:"第4類の中で最も引火点が低い区分に分類される",2:"いかなる保管状況でも自然発火することはない",3:"水溶性であり、水と自由に混和する",4:"消防法上の危険物には該当しない"}},
+
+{id:44,set:"第4回",subject:"性質・火災予防",qno:4,
+ text:"第5類の危険物（自己反応性物質）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第5類の危険物は、多くが分子内に酸素を含有し、外部からの酸素供給がなくても加熱・衝撃・摩擦等により自己燃焼（爆発的な燃焼）を起こすおそれがある。",
+  "第5類の危険物は、それ自体に酸素を含まず、外部からの酸素供給がなければ燃焼しない。",
+  "第5類の危険物の火災には、酸素の供給を遮断する窒息消火が最も有効である。",
+  "第5類の危険物は、いずれも常温で安定しており、加熱・衝撃を加えても分解しない。",
+  "第5類の危険物は、水と接触すると爆発的に反応する禁水性物質である。"],
+ answer:0,
+ explain:"第5類の危険物（ニトログリセリン、ニトロセルロース、有機過酸化物等）は多くが分子内に酸素を含有し、外部からの酸素供給がなくても加熱・衝撃・摩擦等をきっかけに自己反応的に急激な燃焼・爆発を起こす危険性がある。1が妥当。2は分子内に酸素を含むため誤り。3は自己反応性物質は内部に酸素源を持つため窒息消火の効果は限定的であり、大量注水による冷却消火が一般に有効とされるため誤り。4は加熱・衝撃・摩擦により分解・爆発するおそれがあるため誤り。5は禁水性は第3類の性質であり第5類の一般的性質ではないため誤り。",
+ wrongMarks:{1:"外部からの酸素供給がなければ燃焼しない",2:"窒息消火が最も有効である",3:"加熱・衝撃を加えても分解しない",4:"水と接触すると爆発的に反応する禁水性物質である"}},
+
+{id:45,set:"第1回",subject:"性質・火災予防",qno:3,
+ text:"第6類の危険物（酸化性液体）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第6類の危険物は、それ自体は不燃性であるが、強い酸化力を持ち、可燃物と接触すると当該可燃物の燃焼を著しく促進する。",
+  "第6類の危険物は、可燃性液体であり単独で激しく燃焼する。",
+  "第6類の危険物は、いずれも水と接触すると発火する禁水性物質である。",
+  "第6類の危険物は、第4類の危険物と同じ引火性液体の一種である。",
+  "第6類の危険物には、消火に注水を用いることは常に厳禁とされる。"],
+ answer:0,
+ explain:"第6類の危険物（過酸化水素、硝酸、過塩素酸等）は不燃性であるが強い酸化力を持ち、可燃物・有機物と接触すると混合発火・燃焼を促進するおそれがある。1が妥当。2は第6類自体は不燃性であるため誤り。3は禁水性は第3類の性質であり第6類の一般的性質ではないため誤り。4は引火性液体（第4類）とは性質が異なるため誤り。5は多くの第6類危険物は大量の水での希釈・冷却が有効な消火方法とされる場合があり「常に厳禁」は誤り。",
+ wrongMarks:{1:"可燃性液体であり単独で激しく燃焼する",2:"いずれも水と接触すると発火する禁水性物質である",3:"第4類の危険物と同じ引火性液体の一種である",4:"消火に注水を用いることは常に厳禁とされる"}},
+
+{id:46,set:"第2回",subject:"性質・火災予防",qno:4,
+ text:"過酸化水素及び硝酸（第6類）に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "過酸化水素は分解すると酸素を発生し、硝酸は強い酸化性・腐食性を有するため、いずれも容器の密栓管理や火気・還元性物質との接触防止に注意が必要である。",
+  "過酸化水素は分解しても酸素を発生しない極めて安定な物質である。",
+  "硝酸は還元性物質であり、酸化性は持たない。",
+  "過酸化水素及び硝酸は、いずれも可燃性の物質に分類される。",
+  "過酸化水素の濃度は、消防法上の危険物該当性と無関係である。"],
+ answer:0,
+ explain:"過酸化水素は分解して酸素を発生する性質があり容器には通気孔を設けるなどの管理が必要であり、硝酸は強い酸化性・腐食性を有し、いずれも可燃物・還元性物質との接触や火気を避け、容器の破損・漏えいに注意する必要がある。1が妥当。2は過酸化水素は分解により酸素を発生するため誤り。3は硝酸は強い酸化性を有する物質であるため誤り。4はいずれも不燃性（酸化性液体）に分類されるため誤り。5は過酸化水素は濃度36重量%以上のものが消防法上の危険物（第6類）に該当するとされており、濃度は危険物該当性の判断に関係するため誤り。",
+ wrongMarks:{1:"分解しても酸素を発生しない極めて安定な物質である",2:"還元性物質であり、酸化性は持たない",3:"いずれも可燃性の物質に分類される",4:"消防法上の危険物該当性と無関係である"}},
+
+{id:47,set:"第3回",subject:"性質・火災予防",qno:5,
+ text:"危険物の貯蔵・取扱いにおける一般的な火災予防上の注意事項に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "みだりに危険物を放置せず、常に整理整頓を行うとともに、性質の異なる危険物同士の接近・混触を避けることが火災予防の基本となる。",
+  "危険物の貯蔵場所では、換気は火災を助長するため一切行うべきではない。",
+  "性質の異なる危険物は、種類にかかわらず一箇所にまとめて保管する方が安全である。",
+  "危険物を収納した容器は、密栓する必要がない場合がほとんどである。",
+  "危険物を取り扱う場所では、火気の使用に特段の制限は設けられていない。"],
+ answer:0,
+ explain:"危険物の貯蔵・取扱いにあたっては、みだりに危険物やくず等を放置せず整理整頓に努め、酸化性物質と還元性（可燃性）物質のように性質の異なる危険物同士を接近させたり混触させたりしないことが火災予防の基本原則である（危険物の規制に関する政令上の貯蔵・取扱いの共通基準にも定めがある）。1が妥当。2は可燃性蒸気がこもらないよう換気は重要であるため誤り。3は性質の異なる危険物を一箇所にまとめると混触による発火等の危険があるため誤り。4は蒸気の発散や異物の混入を防ぐため容器は密栓するのが原則であるため誤り。5は火気厳禁の掲示等、火気の使用制限が設けられているため誤り。",
+ wrongMarks:{1:"換気は火災を助長するため一切行うべきではない",2:"一箇所にまとめて保管する方が安全である",3:"密栓する必要がない場合がほとんどである",4:"特段の制限は設けられていない"}},
+
+{id:48,set:"第4回",subject:"性質・火災予防",qno:5,
+ text:"危険物の性状の比較に関する次の記述のうち、妥当なものはどれか。",
+ choices:[
+  "第4類の危険物のうち、一般に特殊引火物は最も引火点が低く、動植物油類は比較的引火点が高い部類に属する。",
+  "第4類の危険物は、区分にかかわらずすべて同程度の引火点を有する。",
+  "第一石油類は、第4類の中で最も引火点が高い区分である。",
+  "特殊引火物の引火点は、重油の引火点よりも高い。",
+  "アルコール類は、動植物油類よりも引火点が高い。"],
+ answer:0,
+ explain:"第4類の危険物は区分によって引火点が大きく異なり、特殊引火物（ジエチルエーテル等）が最も引火点が低く危険性が高い一方、動植物油類は比較的引火点が高い部類に属する。1が妥当。2は区分ごとに引火点は大きく異なるため誤り。3は第一石油類より特殊引火物の方が引火点は低いため誤り（第一石油類が「最も高い」わけではない）。4は特殊引火物は重油よりはるかに引火点が低いため誤り。5はアルコール類（エタノール等）は動植物油類より引火点が低いのが一般的であるため誤り。",
+ wrongMarks:{1:"区分にかかわらずすべて同程度の引火点を有する",2:"第4類の中で最も引火点が高い区分である",3:"重油の引火点よりも高い",4:"動植物油類よりも引火点が高い"}}
+];
+
+/* ---------- storage helpers ----------
+   すべての学習データを1つのキーにまとめて保存する（保存回数を減らすため）
+   dailyStats   : 日付 -> {answered, correct}  … カレンダー用
+   perQuestion  : 問題id -> {attempts, correct} … 科目別正答率・苦手問題判定用
+   wrongIds     : 直近の解答で間違えたまま復習が済んでいない問題idの配列
+   currentStreak/bestStreak : 連続正解記録（現在／自己ベスト）
+   lapCount/seenInLap       : 全問を何周したか
+---------------------------------------- */
+const APP_KEY = 'app-data';
+const DAILY_GOAL = 30;
+function defaultAppData(){
+  return {
+    dailyStats:{}, perQuestion:{}, wrongIds:[],
+    currentStreak:0, bestStreak:0,
+    lapCount:0, seenInLap:[]
+  };
+}
+async function loadAppData(){
+  try{
+    const r = await window.storage.get(APP_KEY, false);
+    if(r && r.value) return Object.assign(defaultAppData(), JSON.parse(r.value));
+    return defaultAppData();
+  }catch(e){ return defaultAppData(); }
+}
+async function saveAppData(){
+  try{ await window.storage.set(APP_KEY, JSON.stringify(state.data), false); }
+  catch(e){ console.error('storage save failed', e); }
+}
+function todayStr(d){
+  d = d || new Date();
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function dayStreak(dailyStats){
+  let streak=0;
+  let cursor = new Date();
+  while(true){
+    const key = todayStr(cursor);
+    if(dailyStats[key] && dailyStats[key].answered>0){
+      streak++;
+      cursor.setDate(cursor.getDate()-1);
+    } else break;
+  }
+  return streak;
+}
+function subjectStats(perQuestion){
+  return SUBJECTS.map(subj=>{
+    const qs = QUESTIONS.filter(q=>q.subject===subj);
+    let attempts=0, correct=0;
+    qs.forEach(q=>{
+      const rec = perQuestion[q.id];
+      if(rec){ attempts+=rec.attempts; correct+=rec.correct; }
+    });
+    const rate = attempts? Math.round(correct/attempts*100):0;
+    return {subject:subj, attempts, correct, rate};
+  });
+}
+
+/* ---------- app state ---------- */
+const state = {
+  view:'home', // home | quiz | result | summary | calendar
+  loading:true,
+  data:defaultAppData(),
+  filterSet:'all',
+  filterSubject:'all',
+  filterCount:10,
+  session:null, // {questions, idx, correct, selected, answered, mode}
+  calYear:new Date().getFullYear(),
+  calMonth:new Date().getMonth(), // 0-based
+};
+
+function filteredQuestions(){
+  return QUESTIONS.filter(q=>
+    (state.filterSet==='all' || q.set===state.filterSet) &&
+    (state.filterSubject==='all' || q.subject===state.filterSubject)
+  );
+}
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function startSession(){
+  const pool = shuffle(filteredQuestions());
+  const n = state.filterCount==='all' ? pool.length : Math.min(state.filterCount, pool.length);
+  state.session = { questions: pool.slice(0,n), idx:0, correct:0, selected:null, answered:false, mode:'normal' };
+  state.view='quiz';
+  render();
+}
+function startReviewSession(){
+  const wrongSet = new Set(state.data.wrongIds);
+  const pool = shuffle(QUESTIONS.filter(q=>wrongSet.has(q.id)));
+  if(pool.length===0) return;
+  state.session = { questions: pool, idx:0, correct:0, selected:null, answered:false, mode:'review' };
+  state.view='quiz';
+  render();
+}
+async function submitAnswer(){
+  const s = state.session;
+  if(s.selected===null || s.answered) return;
+  s.answered = true;
+  const q = s.questions[s.idx];
+  const isCorrect = s.selected===q.answer;
+  if(isCorrect) s.correct++;
+  const d = state.data;
+
+  // 日別記録
+  const key = todayStr();
+  if(!d.dailyStats[key]) d.dailyStats[key] = {answered:0, correct:0};
+  d.dailyStats[key].answered++;
+  if(isCorrect) d.dailyStats[key].correct++;
+
+  // 問題別記録（科目別正答率・苦手問題の判定に使用）
+  if(!d.perQuestion[q.id]) d.perQuestion[q.id] = {attempts:0, correct:0};
+  d.perQuestion[q.id].attempts++;
+  if(isCorrect) d.perQuestion[q.id].correct++;
+
+  // 間違えた問題リストの更新（正解したら復習リストから外れる）
+  const wrongSet = new Set(d.wrongIds);
+  if(isCorrect) wrongSet.delete(q.id); else wrongSet.add(q.id);
+  d.wrongIds = [...wrongSet];
+
+  // 連続正解記録
+  if(isCorrect){
+    d.currentStreak++;
+    if(d.currentStreak > d.bestStreak) d.bestStreak = d.currentStreak;
+  } else {
+    d.currentStreak = 0;
+  }
+
+  // 周回数（全問に1回ずつ触れたら1周とカウント）
+  const seenSet = new Set(d.seenInLap);
+  seenSet.add(q.id);
+  if(seenSet.size >= QUESTIONS.length){
+    d.lapCount++;
+    seenSet.clear();
+  }
+  d.seenInLap = [...seenSet];
+
+  await saveAppData();
+  state.view='result';
+  render();
+}
+function nextQuestion(){
+  const s = state.session;
+  if(s.idx+1 < s.questions.length){
+    s.idx++; s.selected=null; s.answered=false;
+    state.view='quiz';
+  }else{
+    state.view='summary';
+    const rate = Math.round(s.correct/s.questions.length*100);
+    maybeRequestReview(rate);
+  }
+  render();
+}
+
+/* ---------- icons ---------- */
+const ICON_QUIZ = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>`;
+const ICON_CAL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
+
+/* ---------- render: home helpers ---------- */
+function ringSvg(current, goal){
+  const size=84, stroke=9, r=(size-stroke)/2, c=2*Math.PI*r;
+  const pct=Math.min(1, goal? current/goal:0);
+  const offset = c*(1-pct);
+  const color = pct>=1 ? 'var(--pass)' : 'var(--seal)';
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="flex:none;">
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round"
+      stroke-dasharray="${c}" stroke-dashoffset="${offset}" transform="rotate(-90 ${size/2} ${size/2})"/>
+    <text x="50%" y="54%" text-anchor="middle" class="ring-num">${current}/${goal}</text>
+  </svg>`;
+}
+
+/* ---------- render: home ---------- */
+function renderHome(){
+  const d = state.data;
+  const dailyStats = d.dailyStats;
+  const totalAnswered = Object.values(dailyStats).reduce((a,s)=>a+s.answered,0);
+  const totalCorrect = Object.values(dailyStats).reduce((a,s)=>a+s.correct,0);
+  const rate = totalAnswered? Math.round(totalCorrect/totalAnswered*100):0;
+  const streak = dayStreak(dailyStats);
+  const todayAnswered = (dailyStats[todayStr()]||{answered:0}).answered;
+  const attemptedUnique = Object.keys(d.perQuestion).length;
+  const overallPct = Math.round(attemptedUnique/QUESTIONS.length*100);
+  const subjStats = subjectStats(d.perQuestion);
+  const wrongCount = d.wrongIds.length;
+  const pool = filteredQuestions();
+
+  const setChips = ['all',...SETS].map(y=>
+    `<button class="chip-btn ${state.filterSet===y?'active':''}" data-act="setSet" data-val="${y}">${y==='all'?'すべて':y}</button>`
+  ).join('');
+  const subjChips = ['all',...SUBJECTS].map(s=>
+    `<button class="chip-btn ${state.filterSubject===s?'active':''}" data-act="setSubject" data-val="${s}">${s==='all'?'すべて':s}</button>`
+  ).join('');
+  const countChips = [5,10,20,'all'].map(c=>
+    `<button class="chip-btn ${state.filterCount===c?'active':''}" data-act="setCount" data-val="${c}">${c==='all'?'全問':c+'問'}</button>`
+  ).join('');
+
+  return `
+  <div class="dash-block">
+    <h2 class="section-title">学習の記録</h2>
+    <div class="dash-grid">
+      <div class="dash-card"><div class="num">${totalCorrect}</div><div class="lbl">累計正解数</div></div>
+      <div class="dash-card"><div class="num">${streak}<small>日</small></div><div class="lbl">連続学習日数</div></div>
+      <div class="dash-card"><div class="num">${d.currentStreak}<small>問</small></div><div class="lbl">連続正解（現在）</div></div>
+      <div class="dash-card"><div class="num">${d.bestStreak}<small>問</small></div><div class="lbl">連続正解 自己ベスト</div></div>
+      <div class="dash-card"><div class="num">${d.lapCount}<small>周</small></div><div class="lbl">全体周回数</div></div>
+      <div class="dash-card"><div class="num">${rate}<small>%</small></div><div class="lbl">総合正答率</div></div>
+    </div>
+  </div>
+
+  <div class="dash-block">
+    <p class="dash-subtitle">今日の学習進捗</p>
+    <div class="today-row">
+      ${ringSvg(todayAnswered, DAILY_GOAL)}
+      <div class="today-copy">
+        <div class="t-num">${todayAnswered} / ${DAILY_GOAL} 問</div>
+        <div class="t-lbl">1日の目標問題数（${DAILY_GOAL}問）に対する今日の進み具合です。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-block">
+    <p class="dash-subtitle">学習カレンダー</p>
+    ${calendarMarkup()}
+  </div>
+
+  <div class="dash-block">
+    <p class="dash-subtitle">全体の進捗（出題範囲の消化状況）</p>
+    <div class="progress-mini-wrap">
+      <div class="progress-mini-head"><span class="p-lbl">全${QUESTIONS.length}問のうち一度は解いた問題</span><span class="p-num">${attemptedUnique}/${QUESTIONS.length}問（${overallPct}%）</span></div>
+      <div class="progress-mini-track"><div class="progress-mini-fill" style="width:${overallPct}%"></div></div>
+    </div>
+  </div>
+
+  <div class="dash-block">
+    <p class="dash-subtitle">科目別 正答率</p>
+    <div class="subject-bars">
+      ${subjStats.map(s=>`
+        <div class="subj-row">
+          <div class="subj-name">${s.subject}</div>
+          <div class="subj-track"><div class="subj-fill" style="width:${s.rate}%"></div></div>
+          <div class="subj-pct">${s.attempts? s.rate+'%':'ー'}</div>
+        </div>`).join('')}
+    </div>
+  </div>
+
+  <div class="dash-block">
+    <p class="dash-subtitle">復習テスト</p>
+    <div class="review-card">
+      <div class="r-copy"><b>間違えたまま残っている問題</b><span>${wrongCount}問 — ランダムに出題して弱点を復習できます</span></div>
+      <button id="reviewBtn" ${wrongCount===0?'disabled':''}>復習を始める</button>
+    </div>
+  </div>
+
+  <h2 class="section-title">出題範囲を選ぶ</h2>
+
+  <div class="field-group">
+    <div class="field-label"><span class="idx">回</span></div>
+    <div class="chip-set">${setChips}</div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label"><span class="idx">科目</span></div>
+    <div class="chip-set">${subjChips}</div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label"><span class="idx">問題数</span></div>
+    <div class="chip-set">${countChips}</div>
+  </div>
+
+  <button class="start-btn" id="startBtn" ${pool.length===0?'disabled':''}>演習を開始する（該当${pool.length}問）</button>
+  ${pool.length===0?'<div class="empty-note">条件に一致する問題がありません。回または科目を変更してください。</div>':''}
+  `;
+}
+
+/* ---------- render: quiz ---------- */
+function renderQuiz(){
+  const s = state.session;
+  const q = s.questions[s.idx];
+  const pct = Math.round((s.idx)/s.questions.length*100);
+  const choicesHtml = q.choices.map((c,i)=>`
+    <button class="choice-btn ${s.selected===i?'selected':''}" data-act="select" data-val="${i}">
+      <span class="choice-num">${i+1}</span><span>${c}</span>
+    </button>`).join('');
+  return `
+  <div class="progress-bar">
+    <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+    <div class="progress-txt">${s.idx+1} / ${s.questions.length}</div>
+  </div>
+  <div class="tag-row">
+    ${s.mode==='review'?'<span class="tag review">復習テスト</span>':''}
+    <span class="tag year">${q.set} 問${q.qno}</span>
+    <span class="tag subject">${q.subject}</span>
+  </div>
+  <div class="q-card">
+    <p class="q-text">${q.text}</p>
+  </div>
+  <div class="choice-list">${choicesHtml}</div>
+  <button class="submit-btn" id="submitBtn" ${s.selected===null?'disabled':''}>解答を確定する</button>
+  `;
+}
+
+/* ---------- render: result ---------- */
+// 選択肢テキストのうち「誤りの原因となっている箇所」を <mark> で強調する。
+// q.wrongMarks = { 選択肢index: "強調したい部分文字列" } の形式（任意項目）。
+function markWrongPhrase(text, phrase){
+  if(!phrase) return text;
+  const idx = text.indexOf(phrase);
+  if(idx===-1) return text;
+  return text.slice(0,idx) + '<mark class="wrong-part">' + phrase + '</mark>' + text.slice(idx+phrase.length);
+}
+
+function renderResult(){
+  const s = state.session;
+  const q = s.questions[s.idx];
+  const isCorrect = s.selected===q.answer;
+  const choicesHtml = q.choices.map((c,i)=>{
+    let cls='choice-btn disabled';
+    let label = c;
+    if(i===q.answer) cls+=' correct';
+    else{
+      if(i===s.selected) cls+=' wrong';
+      const phrase = q.wrongMarks && q.wrongMarks[i];
+      if(phrase) label = markWrongPhrase(c, phrase);
+    }
+    return `<button class="${cls}" disabled><span class="choice-num">${i+1}</span><span>${label}</span></button>`;
+  }).join('');
+  const isLast = s.idx+1>=s.questions.length;
+  const noteHtml = q.note ? `
+  <div class="note-panel">
+    <div class="heading">補足</div>
+    <p>${q.note}</p>
+  </div>` : '';
+  return `
+  <div class="tag-row">
+    <span class="tag year">${q.set} 問${q.qno}</span>
+    <span class="tag subject">${q.subject}</span>
+  </div>
+  <div class="stamp-wrap">
+    <div class="stamp ${isCorrect?'ok':'ng'}">${isCorrect?'○':'✕'}</div>
+  </div>
+  <div class="result-headline">${isCorrect?'正解です':'不正解です — 正解は選択肢'+(q.answer+1)+'番'}</div>
+  <div class="q-card"><p class="q-text">${q.text}</p></div>
+  <div class="choice-list">${choicesHtml}</div>
+  <div class="explain-panel">
+    <div class="heading">解説</div>
+    <p>${q.explain}</p>
+  </div>
+  ${noteHtml}
+  <button class="next-btn" id="nextBtn">${isLast?'結果を見る':'次の問題へ'}</button>
+  `;
+}
+
+/* ---------- render: summary ---------- */
+function renderSummary(){
+  const s = state.session;
+  const rate = Math.round(s.correct/s.questions.length*100);
+  return `
+  <h2 class="section-title">演習結果</h2>
+  <div class="summary-card">
+    <div class="rate">${rate}<span>%</span></div>
+    <div class="caption">${s.questions.length}問中 ${s.correct}問正解</div>
+    <div class="summary-actions">
+      <button class="secondary" id="toHomeBtn">もう一度選ぶ</button>
+      <button class="primary" id="toCalBtn">学習記録を見る</button>
+    </div>
+    <button class="share-btn" id="shareBtn">結果をシェアする</button>
+  </div>
+  `;
+}
+
+/* ---------- render: calendar ---------- */
+function calendarMarkup(){
+  const dailyStats = state.data.dailyStats;
+  const y=state.calYear, m=state.calMonth;
+  const first = new Date(y,m,1);
+  const startDow = first.getDay();
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const todayKey = todayStr();
+
+  let cells = '';
+  for(let i=0;i<startDow;i++) cells += `<div class="cal-cell empty"></div>`;
+  for(let d=1; d<=daysInMonth; d++){
+    const key = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const rec = dailyStats[key];
+    let bg = 'var(--paper-raised)';
+    if(rec){
+      const a = rec.answered;
+      if(a>=15) bg='#6FA3DE';
+      else if(a>=8) bg='#A9CBEF';
+      else if(a>=1) bg='#D7E8FB';
+    }
+    const isToday = key===todayKey;
+    cells += `<div class="cal-cell ${isToday?'today':''}" style="background:${bg}">
+      <div class="d">${d}</div>
+      ${rec? `<div class="frac">${rec.correct}/${rec.answered}問</div>`:''}
+    </div>`;
+  }
+
+  const dowLabels = ['日','月','火','水','木','金','土'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
+
+  return `
+  <p class="cal-caption">各日付の表示：正解数 / 解答数</p>
+  <div class="cal-nav">
+    <button id="calPrev">‹</button>
+    <div class="month-label">${y}年 ${m+1}月</div>
+    <button id="calNext">›</button>
+  </div>
+  <div class="cal-grid">${dowLabels}${cells}</div>
+  <div class="cal-legend">
+    <span class="sw" style="background:var(--paper-raised)"></span>未学習
+    <span class="sw" style="background:#D7E8FB"></span>1〜7問
+    <span class="sw" style="background:#A9CBEF"></span>8〜14問
+    <span class="sw" style="background:#6FA3DE"></span>15問以上
+  </div>
+  `;
+}
+
+function renderCalendar(){
+  const dailyStats = state.data.dailyStats;
+  const totalAnswered = Object.values(dailyStats).reduce((a,s)=>a+s.answered,0);
+  const totalCorrect = Object.values(dailyStats).reduce((a,s)=>a+s.correct,0);
+  const rate = totalAnswered? Math.round(totalCorrect/totalAnswered*100):0;
+  const streak = dayStreak(dailyStats);
+
+  return `
+  <h2 class="section-title">学習記録</h2>
+  <div class="cal-overview">
+    <div class="cal-stat"><div class="num">${totalAnswered}</div><div class="lbl">総解答数</div></div>
+    <div class="cal-stat"><div class="num">${rate}%</div><div class="lbl">正答率</div></div>
+    <div class="cal-stat"><div class="num">${streak}</div><div class="lbl">連続学習日数</div></div>
+  </div>
+  ${calendarMarkup()}
+  `;
+}
+
+/* ---------- main render ---------- */
+function render(){
+  const app = document.getElementById('app');
+  let body='';
+  if(state.loading){
+    body = `<div class="empty-state">読み込み中…</div>`;
+  } else if(state.view==='home') body = renderHome();
+  else if(state.view==='quiz') body = renderQuiz();
+  else if(state.view==='result') body = renderResult();
+  else if(state.view==='summary') body = renderSummary();
+  else if(state.view==='calendar') body = renderCalendar();
+
+  const navHome = state.view==='home'||state.view==='quiz'||state.view==='result'||state.view==='summary';
+  const showBack = state.view==='quiz'||state.view==='result';
+  app.innerHTML = `
+    <div class="topbar${showBack?' with-back':''}">
+      ${showBack?'<button id="backHomeBtn" class="back-btn" aria-label="トップに戻る">‹ トップへ</button>':''}
+      <div class="brand">危険物取扱者【甲種】<small>予想問題 ・ 5択形式</small></div>
+    </div>
+    <div class="main">${body}</div>
+    <div class="bottom-nav">
+      <button class="nav-btn ${navHome?'active':''}" data-nav="home">${ICON_QUIZ}問題を解く</button>
+      <button class="nav-btn ${state.view==='calendar'?'active':''}" data-nav="calendar">${ICON_CAL}学習記録</button>
+    </div>
+  `;
+  attachEvents();
+}
+
+function attachEvents(){
+  const app = document.getElementById('app');
+  app.querySelectorAll('[data-nav]').forEach(btn=>{
+    btn.onclick = ()=>{
+      const nav = btn.getAttribute('data-nav');
+      if(nav==='home') state.view='home';
+      else state.view='calendar';
+      render();
+    };
+  });
+  app.querySelectorAll('[data-act="setSet"]').forEach(btn=>{
+    btn.onclick=()=>{ state.filterSet = btn.getAttribute('data-val'); render(); };
+  });
+  app.querySelectorAll('[data-act="setSubject"]').forEach(btn=>{
+    btn.onclick=()=>{ state.filterSubject = btn.getAttribute('data-val'); render(); };
+  });
+  app.querySelectorAll('[data-act="setCount"]').forEach(btn=>{
+    btn.onclick=()=>{
+      const v = btn.getAttribute('data-val');
+      state.filterCount = v==='all'?'all':Number(v);
+      render();
+    };
+  });
+  const startBtn = document.getElementById('startBtn');
+  if(startBtn) startBtn.onclick = startSession;
+
+  const reviewBtn = document.getElementById('reviewBtn');
+  if(reviewBtn) reviewBtn.onclick = startReviewSession;
+
+  app.querySelectorAll('[data-act="select"]').forEach(btn=>{
+    btn.onclick=()=>{
+      state.session.selected = Number(btn.getAttribute('data-val'));
+      render();
+    };
+  });
+  const submitBtn = document.getElementById('submitBtn');
+  if(submitBtn) submitBtn.onclick = submitAnswer;
+  const nextBtn = document.getElementById('nextBtn');
+  if(nextBtn) nextBtn.onclick = nextQuestion;
+
+  const toHomeBtn = document.getElementById('toHomeBtn');
+  if(toHomeBtn) toHomeBtn.onclick = ()=>{ state.view='home'; render(); };
+
+  const backHomeBtn = document.getElementById('backHomeBtn');
+  if(backHomeBtn) backHomeBtn.onclick = ()=>{
+    const ok = window.confirm('演習を中断してトップページに戻りますか？\n（この問題の回答は保存されません）');
+    if(ok){ state.view='home'; render(); }
+  };
+  const toCalBtn = document.getElementById('toCalBtn');
+  if(toCalBtn) toCalBtn.onclick = ()=>{ state.view='calendar'; render(); };
+
+  const shareBtn = document.getElementById('shareBtn');
+  if(shareBtn) shareBtn.onclick = ()=> shareResult(state.session);
+
+  const calPrev = document.getElementById('calPrev');
+  if(calPrev) calPrev.onclick = ()=>{
+    state.calMonth--; if(state.calMonth<0){state.calMonth=11; state.calYear--;}
+    render();
+  };
+  const calNext = document.getElementById('calNext');
+  if(calNext) calNext.onclick = ()=>{
+    state.calMonth++; if(state.calMonth>11){state.calMonth=0; state.calYear++;}
+    render();
+  };
+}
+
+/* ---------- init ---------- */
+(async function init(){
+  render();
+  state.data = await loadAppData();
+  state.loading = false;
+  render();
+})();
+</script>
+</body>
+</html>
