@@ -11,7 +11,7 @@ workflows:
         BUNDLE_ID: "com.businessmaker.kikenbutsu"
         XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
-      node: 20.11.0
+      node: 22.11.0
       xcode: 16.4
       cocoapods: default
 
