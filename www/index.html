@@ -479,7 +479,7 @@ if(!window.storage){
   // ↓↓↓ ここを自分のAdMob本番IDに置き換える（Android/iOSそれぞれ別のIDです）↓↓↓
   // ※このアプリはまだAdMob広告ユニットを作成していないため、プレースホルダーのままです。
   const PROD_BANNER_ID_ANDROID = 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX';
-  const PROD_BANNER_ID_IOS = 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX';
+  const PROD_BANNER_ID_IOS = 'ca-app-pub-4478590779171256/7339408232';
   // Googleが公式に配布しているテスト用ID（動作確認中はこちらを使う）
   const TEST_BANNER_ID_ANDROID = 'ca-app-pub-3940256099942544/6300978111';
   const TEST_BANNER_ID_IOS = 'ca-app-pub-3940256099942544/2934735716';
@@ -495,7 +495,7 @@ if(!window.storage){
   // クローズドテストが完了し、製品版（本番）申請のビルドを作る直前に
   // AdMobで本番の広告ユニットIDを取得し、上のPROD_BANNER_ID_*に設定してから
   // false へ戻して再ビルド・再アップロードしてください。
-  const FORCE_TEST_ADS_FOR_CLOSED_TESTING = true;
+  const FORCE_TEST_ADS_FOR_CLOSED_TESTING = false;
 
   // 本番IDをまだ設定していない間、またはクローズドテスト中は自動でテストIDを使う（誤クリックによる規約違反防止）
   const BANNER_ID = (FORCE_TEST_ADS_FOR_CLOSED_TESTING || PROD_BANNER_ID.includes('XXXX')) ? TEST_BANNER_ID : PROD_BANNER_ID;
